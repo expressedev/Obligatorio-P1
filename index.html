@@ -34,7 +34,10 @@
   <div id="perfilCensista">
 
     <div>
-      <input type="button" value="Censar Una Persona Nueva"> <br>
+      <input type="button" value="Censar Una Persona Nueva" id="btnCensarPersona"> <br>
+      <input type="button" value="Consultar censos pre completados por validar" id="btnCensosPreCompletados"> <br>
+      <input type="button" id="btnReasignar" value="Reasignar a otro Censista"><br>
+      <input type="button" id="btnVisualizarInforEstad" value="Visualizar Info Estadistica"><br>
     </div>
     <div>
       <h3>INGRESO DE DATOS</h3>
@@ -56,7 +59,7 @@
 
       </select><br><br>
       <label for="departamento">Seleccione departamento</label>
-      <select id="departamento">
+      <select id="departamento"> 
         <option selected disabled>Seleccione</option>
         <option id="1">Montevideo</option>
         <option id="2">Canelones</option>
@@ -77,8 +80,68 @@
         <option id="17">Soriano</option>
         <option id="18">Tacuarembo</option>
         <option id="19">Treinta y Tres</option>
-        <br><br>
+      </select><br><br>
+
     </div>
+    <p></p>
+    <div>
+      <input type="text" id="buscarPorCedula" placeholder="Ingrese Cedula del Usuario"> <br>
+      <input type="button" id="btnBuscarPorCed" value="Buscar Usuario">
+      <p id="respuestaAbusqueda"></p> <br> 
+    </div>
+    <div>
+      <h3>Los datos del usuario pre cargado son los siguientes:</h3>
+      <input type="button" id="btnCorrecto" value="Datos Correctos">
+      <input type="button" id="btnIncorrecto" value="Modificar Datos">
+    </div>
+    <div>
+      <h3>Reasignar Persona</h3>
+      <label for="pendienteValidar">Seleccione persona</label>
+      <select id="pendienteValidar">
+          <option id="nada" disabled selected>Seleccione</option>
+          <option id="Juan">Juan</option>
+          <option id="Jose">Jose</option>
+      </select> <br> <br>
+      <label for="censistasDisponibles">Seleccione un censista</label>
+      <select id="censistasDisponibles">
+          <option disabled selected>Seleccione</option>
+          <option id="censista1">Marcos</option>
+          <option id="censista2">Raul</option>
+      </select> <br> <br>
+      <input type="button" id="btnAsignarNuevoCensista" value="Asignar">
+    </div>
+
+    <div>
+      <h3>Informacion Estadistica</h3>
+      <p id="totalDeCensados">Traer de JS la info con una suma de censados</p>
+      <label for="infoDelDepartamento">Seleccione departamento para ver su informacion</label>
+      <select id="infoDelDepartamento"> 
+        <option selected disabled>Seleccione</option>
+        <option id="A1">Montevideo</option>
+        <option id="A2">Canelones</option>
+        <option id="A3">Cerro Largo</option>
+        <option id="A4">Maldonado</option>
+        <option id="A5">Flores</option>
+        <option id="A6">Florida</option>
+        <option id="A7">Salto</option>
+        <option id="A8">Paysandu</option>
+        <option id="A9">Rocha</option>
+        <option id="A10">Artigas</option>
+        <option id="A11">Colonia</option>
+        <option id="A12">Durazno</option>
+        <option id="A13">Lavalleja</option>
+        <option id="A14">Rio Negro</option>
+        <option id="A15">Rivera</option>
+        <option id="A16">San jose</option>
+        <option id="A17">Soriano</option>
+        <option id="A18">Tacuarembo</option>
+        <option id="A19">Treinta y Tres</option>
+      </select><br>
+      <input type="button" id="verInfoDelDpto" value="Ver informacion">
+      <p id="mostrarInfoPorDpto"></p> <br><br>
+      QUEDO EN VER EL PORCENTAJE DE PERSONAS CENSADAS
+    </div>
+
 
   </div>
 
