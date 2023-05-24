@@ -15,7 +15,9 @@
   <div>
     <label for="">Ingresar</label> <br>
     <input type="text" placeholder="Ingresar Usuario" id="usuario"> <br>
+    <p id="errorUsuario"></p>
     <input type="text" placeholder="Ingresar Contraseña" id="contraseña"> <br> <br>
+    <p id="errorContraseña"></p>
     <input type="button" id="btnIngreso" value="Ingresar"> <br> <br>
   </div>
   <div>
@@ -28,6 +30,60 @@
   <div>
 
   </div>
+
+  <div id="perfilCensista">
+
+    <div>
+      <input type="button" value="Censar Una Persona Nueva"> <br>
+    </div>
+    <div>
+      <h3>INGRESO DE DATOS</h3>
+      <label for="nombre">Ingresar Nombre:</label>
+      <input type="text" id="nombre"> <br> <br>
+      <label for="apellido">Ingresar Apellido:</label>
+      <input type="text" id="apellido"> <br> <br>
+      <label for="edad">Ingresar Edad:</label>
+      <input type="text" id="edad"> <br> <br>
+      <label for="cedula">Ingresar su Cedula:</label>
+      <input type="text" id="cedula"> <br> <br>
+      <label for="ocupacion">Seleccione su ocupacion:</label>
+      <select id="ocupacion">
+        <option disabled selected>Seleccione</option>
+        <option id="dependiente">Dependiente</option>
+        <option id="independiente">Independiente</option>
+        <option id="estudiante">Estudiante</option>
+        <option id="noTrabaja">No trabaja</option>
+
+      </select><br><br>
+      <label for="departamento">Seleccione departamento</label>
+      <select id="departamento">
+        <option selected disabled>Seleccione</option>
+        <option id="1">Montevideo</option>
+        <option id="2">Canelones</option>
+        <option id="3">Cerro Largo</option>
+        <option id="4">Maldonado</option>
+        <option id="5">Flores</option>
+        <option id="6">Florida</option>
+        <option id="7">Salto</option>
+        <option id="8">Paysandu</option>
+        <option id="9">Rocha</option>
+        <option id="10">Artigas</option>
+        <option id="11">Colonia</option>
+        <option id="12">Durazno</option>
+        <option id="13">Lavalleja</option>
+        <option id="14">Rio Negro</option>
+        <option id="15">Rivera</option>
+        <option id="16">San jose</option>
+        <option id="17">Soriano</option>
+        <option id="18">Tacuarembo</option>
+        <option id="19">Treinta y Tres</option>
+        <br><br>
+    </div>
+
+  </div>
+
+
+
 </body>
 
 </html>
