@@ -113,7 +113,7 @@
 
     <div>
       <h3>Informacion Estadistica</h3>
-      <p id="totalDeCensados">Traer de JS la info con una suma de censados</p>
+      <p id="totalDeCensados"></p>  <!-- Traer de JS la info con una suma de censados -->
       <label for="infoDelDepartamento">Seleccione departamento para ver su informacion</label>
       <select id="infoDelDepartamento"> 
         <option selected disabled>Seleccione</option>
@@ -139,14 +139,90 @@
       </select><br>
       <input type="button" id="verInfoDelDpto" value="Ver informacion">
       <p id="mostrarInfoPorDpto"></p> <br><br>
-      QUEDO EN VER EL PORCENTAJE DE PERSONAS CENSADAS
+      <table border="1px">
+        <thead id="tablaDepartamentos">
+        <tr>
+          <th>Departamento</th>
+          <th>Personas censadas</th>
+          <th>% pendiente de validar</th>
+          <th>% pendiente de validar</th>
+          <th>% de menores censados</th>
+          <th>% de mayores censados</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div> 
+      <!-- PERFIL INVITADO -->
+      <h3>INGRESO DE DATOS</h3>
+      <label for="nombreInvitado">Ingresar Nombre:</label>
+      <input type="text" id="nombreInvitado"> <br> <br>
+      <label for="apellidoInvitado">Ingresar Apellido:</label>
+      <input type="text" id="apellidoInvitado"> <br> <br>
+      <label for="edadInvitado">Ingresar Edad:</label>
+      <input type="text" id="edadInvitado"> <br> <br>
+      <label for="cedulaInvitado">Ingresar su Cedula:</label>
+      <input type="text" id="cedulaInvitado"> <br> <br>
+      <label for="infoDelDepartamentoInvitado">Seleccione departamento</label>
+      <select id="infoDelDepartamentoInvitado"> 
+        <option selected disabled>Seleccione</option>
+        <option id="A1Invitado">Montevideo</option>
+        <option id="A2Invitado">Canelones</option>
+        <option id="A3Invitado">Cerro Largo</option>
+        <option id="A4Invitado">Maldonado</option>
+        <option id="A5Invitado">Flores</option>
+        <option id="A6Invitado">Florida</option>
+        <option id="A7Invitado">Salto</option>
+        <option id="A8Invitado">Paysandu</option>
+        <option id="A9Invitado">Rocha</option>
+        <option id="A10Invitado">Artigas</option>
+        <option id="A11Invitado">Colonia</option>
+        <option id="A12Invitado">Durazno</option>
+        <option id="A13Invitado">Lavalleja</option>
+        <option id="A14Invitado">Rio Negro</option>
+        <option id="A15Invitado">Rivera</option>
+        <option id="A16Invitado">San jose</option>
+        <option id="A17Invitado">Soriano</option>
+        <option id="A18Invitado">Tacuarembo</option>
+        <option id="A19Invitado">Treinta y Tres</option>
+      </select><br> <br>
+      <label for="ocupacionInvitado">Seleccione su ocupacion:</label>
+      <select id="ocupacionInvitado">
+        <option disabled selected>Seleccione</option>
+        <option id="dependienteInvitado">Dependiente</option>
+        <option id="independienteInvitado">Independiente</option>
+        <option id="estudianteInvitado">Estudiante</option>
+        <option id="noTrabajaInvitado">No trabaja</option> 
+      </select><br> <br>
+        <input type="button" value="Enviar Datos" id="btnEnvioInvitado">
+        <p id="validacionInvitado"></p> <br>
+        <label for="btneliminarInvitado">¿Desea eliminar sus datos?</label>
+        <input type="button" value="Eliminar Datos" id="btnEliminarInvitado">
+        <label for="btnReporteDepartamento">Ver reporte de cada departamento</label>
+        <input type="button" id="btnReporteDepartamento" value="Mostrar Reporte"> <br>
+        <table border="1px">
+          <thead id="tablaReportesDepartamentos">
+          <tr>
+            <th>Departamento</th>
+            <th>Usuarios que estudian</th>
+            <th>Usuarios que no trabajan</th>
+            <th>Dependiente e independientes</th>
+            <th>% total del censados</th>
+          </tr>
+          </thead>
+          <tbody>
+  
+          </tbody>
+        </table>
     </div>
 
 
+    
+
   </div>
-
-
-
 </body>
-
 </html>
