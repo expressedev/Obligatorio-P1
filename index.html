@@ -2,53 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script src="/js/libreria.js"></script>
+    <script src="/js/clases.js"></script>
+    <script src="/js/menu.js"></script>
     <script src="/js/script.js"></script>
     <title>Obligatorio Aznarez, Navarro</title>
   </head>
 
   <body>
-    <div>
-      <!-- Pantalla de Ingreso o Registro o Ingreso Invitado -->
+    <!-- Pantalla Ingreso -->
+
+    <div id="inicial">
+      <!-- Ingreso Invitado -->
       <div>
-        <label for="ingresar">Ingresar como Invitado</label> <br />
-        <br />
+        <h2>Ingresar Como Invitado</h2>
         <input type="button" id="btnInvitado" value="Ingresar" /> <br /><br />
       </div>
+
+      <!-- Login Usuario -->
       <div>
-        <label for="">Ingresar</label> <br />
-        <input type="text" placeholder="Ingresar Usuario" id="usuario" /> <br />
+        <h2>Login</h2>
+        <label for="usuario">Ingresar Usuario</label>
+        <input type="text" placeholder="" id="usuario" /> <br />
         <p id="errorUsuario"></p>
-        <input type="text" placeholder="Ingresar Contraseña" id="contraseña" />
+        <label for="contraseña">Ingresar Contraseña</label>
+        <input type="text" placeholder="" id="contraseña" />
         <br />
         <br />
         <p id="errorContraseña"></p>
         <input type="button" id="btnIngreso" value="Ingresar" /> <br />
         <br />
       </div>
+
+      <!-- Registro Usuario -->
       <div>
-        <label for="nombreRegistro">Registrarse</label> <br />
+        <h2>Registro</h2>
+        <label for="nombreRegistro">Ingrese Nombre</label>
+        <input type="text" id="nombreRegistro" placeholder="" />
         <br />
-        <input
-          type="text"
-          id="nombreRegistro"
-          placeholder="Ingrese su nombre"
-        />
         <br />
-        <input
-          type="text"
-          id="nombreUsuario"
-          placeholder="Ingrese nombre de usuario"
-        />
+        <label for="nombreUsuario">Ingrese Usuario</label>
+        <input type="text" id="nombreUsuario" placeholder="" />
         <br />
-        <input
-          type="text"
-          id="contraRegistro"
-          placeholder="Ingrese su contraseña"
-        />
+        <br />
+        <label for="contraRegistro">Ingrese Contraseña</label>
+        <input type="password" id="contraRegistro" placeholder="" />
         <br />
         <br />
         <input type="button" id="btnRegistrarse" value="Registrarse" />
+        <br />
+        <br />
       </div>
 
       <!-- Pantalla del Perfil Censista -->

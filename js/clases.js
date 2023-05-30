@@ -2,6 +2,12 @@ class Sistema {
   constructor() {
     this.usuarios = [];
   }
+  agregarUsuario(unUsuario) {
+    this.usuarios.push(unUsuario);
+  }
+  obtenerUsuarios() {
+    return this.usuarios;
+  }
 }
 
 class Usuario {
