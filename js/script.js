@@ -3,7 +3,7 @@ window.addEventListener("load", inicio);
 function inicio() {
   document.querySelector("#btnIngreso").addEventListener("click", login);
   document.querySelector("#btnRegistrarse").addEventListener("click", registro);
-  mostrarDiv("ingreso");
+  mostrarDivPrincipal("ingreso");
   document.querySelector("#btnInvitado").addEventListener("click", invitado);
   document
     .querySelector("#btnBuscarCed")
@@ -24,7 +24,7 @@ function login() {
     alert("Todos los campos son obligatorios");
   } else if (!sistema.loginRealizado(usuario, contraseña)) {
     alert("Login Incorrecto");
-  } else mostrarDiv("perfilCensista");
+  } else mostrarDivPrincipal("perfilCensista");
   document.querySelector("#usuarioLogin").innerHTML =
     sistema.usuarioLogueado.nombre;
   document.querySelector("#usuario").value = "";
@@ -32,7 +32,7 @@ function login() {
 }
 
 function cerrarSesion() {
-  mostrarDiv("ingreso");
+  mostrarDivPrincipal("ingreso");
   sistema.logoutRealizado();
 }
 
@@ -72,11 +72,11 @@ function registro() {
   }
 }
 function invitado() {
-  mostrarDiv("buscardorCedulaInvitado");
+  mostrarDivPrincipal("buscardorCedulaInvitado");
 }
 
 function ingresoDatosNuevoInvitado() {
-  mostrarDiv("ingresoDeDatos");
+  mostrarDivPrincipal("ingresoDeDatos");
 }
 
 function passwordIncompleta(unPass) {

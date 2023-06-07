@@ -1,4 +1,4 @@
-function ocultarDiv() {
+function ocultarDivs() {
   document.querySelector("#ingreso").style.display = "none";
   document.querySelector("#perfilCensista").style.display = "none";
   document.querySelector("#formularioInvitado").style.display = "none";
@@ -6,7 +6,15 @@ function ocultarDiv() {
   document.querySelector("#buscardorCedulaInvitado").style.display = "none";
 }
 
-function mostrarDiv(id) {
-  ocultarDiv();
+function mostrarDivPrincipal(id) {
+  ocultarDivs();
   document.querySelector("#" + id).style.display = "block";
+}
+
+function mostrarDiv(id) {
+  document.querySelector("#" + id).style.display = "block";
+}
+
+function ocultarDiv(id) {
+  document.querySelector("#" + id).style.display = "none";
 }
