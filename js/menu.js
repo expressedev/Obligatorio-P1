@@ -1,7 +1,9 @@
 function ocultarDiv() {
   document.querySelector("#ingreso").style.display = "none";
   document.querySelector("#perfilCensista").style.display = "none";
-  document.querySelector("#perfilInvitado").style.display = "none";
+  document.querySelector("#formularioInvitado").style.display = "none";
+  document.querySelector("#ingresoDeDatos").style.display = "none";
+  
 }
 
 function mostrarDiv(id) {
