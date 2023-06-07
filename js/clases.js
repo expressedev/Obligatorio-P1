@@ -4,9 +4,10 @@ class Sistema {
     this.censos = [];
     this.agregarUsuarioPrueba();
     this.agregarCensoPrueba();
+    this.usuarioLogueado = null;
   }
   agregarUsuarioPrueba() {
-    this.usuarios.push(new Usuario("Pedro", "Aznarez", "Hola123"));
+    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123"));
     this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123"));
     this.usuarios.push(new Usuario("Guille", "Guille", "Hola123"));
   }
@@ -42,18 +43,26 @@ class Sistema {
   obtenerUsuarios() {
     return this.usuarios;
   }
-  usuarioRepetido(nom) {
-    let estaRepetido = false;
-    for (let i = 0; i < this.usuarios.length && !estaRepetido; i++) {
+  buscarUsuario(usuario) {
+    let usuarioB = null;
+    for (let i = 0; i < this.usuarios.length; i++) {
       let usuarioActual = this.usuarios[i];
-      if (nom === usuarioActual.usuario) {
-        estaRepetido = true;
+      if (usuarioActual.usuario.toLowerCase() === usuario.toLowerCase()) {
+        usuarioB = usuarioActual;
       }
     }
-    return estaRepetido;
+    return usuarioB;
+  }
+  existeUsuario(nom) {
+    let existe = false;
+    let buscar = this.buscarUsuario(nom);
+    if (buscar != null) {
+      existe = true;
+    }
+    return existe;
   }
 
-  loginValido(nombreDeUsuario, pass) {
+  loginRealizado(nombreDeUsuario, pass) {
     let login = false;
     for (let i = 0; i < this.usuarios.length && !login; i++) {
       let usuarioActual = this.usuarios[i];
@@ -62,9 +71,13 @@ class Sistema {
         usuarioActual.contraseña === pass
       ) {
         login = true;
+        this.usuarioLogueado = usuarioActual;
       }
     }
     return login;
+  }
+  logoutRealizado() {
+    this.usuarioLogueado = null;
   }
 
   buscarCedula(cedula) {

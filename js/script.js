@@ -12,21 +12,28 @@ function inicio() {
     .querySelector("#btnIngresoDatos")
     .addEventListener("click", ingresoDatosNuevoInvitado);
   document.querySelector("#btnDatosForm").addEventListener("click", datosCenso);
+  document.querySelector("#btnLogout").addEventListener("click", cerrarSesion);
 }
 
 let sistema = new Sistema();
-let usuarioLogueado = null;
 
 function login() {
   let usuario = document.querySelector("#usuario").value.trim();
   let contraseña = document.querySelector("#contraseña").value.trim();
   if (usuario.length === 0 || contraseña.length === 0) {
     alert("Todos los campos son obligatorios");
-  } else if (!sistema.loginValido(usuario, contraseña)) {
+  } else if (!sistema.loginRealizado(usuario, contraseña)) {
     alert("Login Incorrecto");
   } else mostrarDiv("perfilCensista");
-  usuarioLogueado = usuario;
-  document.querySelector("#usuarioLogin").innerHTML = usuarioLogueado;
+  document.querySelector("#usuarioLogin").innerHTML =
+    sistema.usuarioLogueado.nombre;
+  document.querySelector("#usuario").value = "";
+  document.querySelector("#contraseña").value = "";
+}
+
+function cerrarSesion() {
+  mostrarDiv("ingreso");
+  sistema.logoutRealizado();
 }
 
 function registro() {
@@ -36,11 +43,7 @@ function registro() {
   document.querySelector("#nombreRegistro").value = "";
   document.querySelector("#nombreUsuario").value = "";
   document.querySelector("#contraRegistro").value = "";
-  let nuevoUsuario = new Usuario(
-    nombreRegistro,
-    nombreUsuario,
-    contraseñaRegistro
-  );
+
   if (
     nombreRegistro.length === 0 ||
     nombreUsuario.length === 0 ||
@@ -51,15 +54,21 @@ function registro() {
     alert("El nombre debe tener al menos 2 caracteres");
   } else if (nombreUsuario.length < 3) {
     alert("El nombre de usuario debe tener al menos 2 caracteres");
-  } else if (sistema.usuarioRepetido(nombreUsuario)) {
+  } else if (sistema.existeUsuario(nombreUsuario)) {
     alert("El nombre de usuario ya existe");
   } else if (passwordIncompleta(contraseñaRegistro)) {
     alert(
       "La contraseña debe ser mayor a 4 caracteres, contener una minuscula, una mayuscula y un numero "
     );
   } else {
+    let nuevoUsuario = new Usuario(
+      nombreRegistro,
+      nombreUsuario,
+      contraseñaRegistro
+    );
     sistema.agregarUsuario(nuevoUsuario);
     alert("registrado");
+    document.querySelector("#formRegistro").reset();
   }
 }
 function invitado() {
