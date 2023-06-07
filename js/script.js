@@ -84,10 +84,14 @@ function passwordIncompleta(unPass) {
 }
 
 function buscadorCedula() {
-  console.log("anda el boton");
   let cedula = Number(document.querySelector("#inputCedulaInvitado").value);
-  if (sistema.buscarCedula(cedula)) {
-    document.querySelector("#cedulabuscada").innerHTML = cedula;
+  let buscar = sistema.buscarCedula(cedula);
+  if (buscar === null) {
+    document.querySelector("#cedulabuscada").innerHTML =
+      "La cedula no esta censada";
+  } else {
+    let nombre = JSON.stringify(sistema.buscarCedula(cedula).nombre);
+    document.querySelector("#cedulabuscada").innerHTML = nombre;
   }
 }
 
