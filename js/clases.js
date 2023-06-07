@@ -2,11 +2,38 @@ class Sistema {
   constructor() {
     this.usuarios = [];
     this.censos = [];
-    this.agregarUsuarioPrueba()  
+    this.agregarUsuarioPrueba();
+    this.agregarCensoPrueba();
+  }
+  agregarUsuarioPrueba() {
+    this.usuarios.push(new Usuario("Pedro", "Aznarez", "Hola123"));
+    this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123"));
+    this.usuarios.push(new Usuario("Guille", "Guille", "Hola123"));
   }
 
-  agregarUsuarioPrueba() {
-    this.usuarios.push(new Usuario("Pedro", "Pedro345", "Hola123"))
+  agregarCensoPrueba() {
+    this.censos.push(
+      new Censo(
+        "Pedro",
+        "Aznarez",
+        "20",
+        49758675,
+        "Montevideo",
+        "Independiente",
+        false,
+        null
+      ),
+      new Censo(
+        "Maxi",
+        "Navarro",
+        "20",
+        49758672,
+        "Montevideo",
+        "Independiente",
+        false,
+        null
+      )
+    );
   }
 
   agregarUsuario(unUsuario) {
@@ -39,11 +66,23 @@ class Sistema {
     }
     return login;
   }
+
+  buscarCedula(cedula) {
+    let cedulaBuscada = null;
+    for (let i = 0; i < this.censos.length && !cedulaBuscada; i++) {
+      let cedulaAcutal = this.censos[i];
+      if (cedulaAcutal.cedula === cedula) {
+        cedulaBuscada = cedulaAcutal;
+      }
+    }
+    return cedulaBuscada;
+  }
+
   obtenerCensos() {
     return this.censos;
   }
-  agregarCenso(unCenso){
-    this.censos.push(unCenso)
+  agregarCenso(unCenso) {
+    this.censos.push(unCenso);
   }
 }
 
@@ -56,14 +95,24 @@ class Usuario {
 }
 
 class Censo {
-  constructor(nombre, apellido, edad, cedula, departamento, ocupacion, validado){
+  constructor(
+    nombre,
+    apellido,
+    edad,
+    cedula,
+    departamento,
+    ocupacion,
+    validado,
+    censita
+  ) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.edad = edad;
-    this.cedula = cedula
-    this.departamento = departamento
-    this.ocupacion = ocupacion
-    this.validado = validado
+    this.cedula = cedula;
+    this.departamento = departamento;
+    this.ocupacion = ocupacion;
+    this.validado = validado;
+    this.censita = censita;
   }
 }
 
