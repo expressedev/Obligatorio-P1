@@ -1,4 +1,4 @@
-window.addEventListener("load", inicio);
+ window.addEventListener("load", inicio);
 
 function inicio() {
   document.querySelector("#btnIngreso").addEventListener("click", login);
@@ -33,7 +33,7 @@ function login() {
 
 function cerrarSesion() {
   mostrarDivPrincipal("ingreso");
-  sistema.logoutRealizado();
+  sistema.logoutRealizado(); 
 }
 
 function registro() {

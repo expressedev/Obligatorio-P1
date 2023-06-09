@@ -1,13 +1,13 @@
-class Sistema {
+ class Sistema {
   constructor() {
-    this.usuarios = [];
+    this.usuarios = []; //El this aca se usa para definir una propiedad
     this.censos = [];
     this.agregarUsuarioPrueba();
     this.agregarCensoPrueba();
     this.usuarioLogueado = null;
   }
   agregarUsuarioPrueba() {
-    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123"));
+    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123")); //En este caso el this se utiliza para acceder a una propiedad
     this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123"));
     this.usuarios.push(new Usuario("Guille", "Guille", "Hola123"));
   }
@@ -36,7 +36,6 @@ class Sistema {
       )
     );
   }
-
   agregarUsuario(unUsuario) {
     this.usuarios.push(unUsuario);
   }
@@ -51,7 +50,7 @@ class Sistema {
         usuarioB = usuarioActual;
       }
     }
-    return usuarioB;
+    return usuarioB;  
   }
   existeUsuario(nom) {
     let existe = false;
