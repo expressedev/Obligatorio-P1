@@ -1,4 +1,4 @@
- class Sistema {
+class Sistema {
   constructor() {
     this.usuarios = []; //El this aca se usa para definir una propiedad
     this.censos = [];
@@ -50,7 +50,7 @@
         usuarioB = usuarioActual;
       }
     }
-    return usuarioB;  
+    return usuarioB;
   }
   existeUsuario(nom) {
     let existe = false;
@@ -96,11 +96,8 @@
   agregarCenso(unCenso) {
     this.censos.push(unCenso);
   }
-  modificarCenso(cedula){
-    this.buscarCedula
-  }
+  modificarCenso(nombre, apellido, edad, cedula, departamento, ocupacion) {}
 }
-  
 
 class Usuario {
   constructor(nombre, usuario, contraseña) {

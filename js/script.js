@@ -1,4 +1,4 @@
- window.addEventListener("load", inicio);
+window.addEventListener("load", inicio);
 
 function inicio() {
   document.querySelector("#btnIngreso").addEventListener("click", login);
@@ -13,7 +13,9 @@ function inicio() {
     .addEventListener("click", ingresoDatosNuevoInvitado);
   document.querySelector("#btnDatosForm").addEventListener("click", datosCenso);
   document.querySelector("#btnLogout").addEventListener("click", cerrarSesion);
-  document.querySelector("#btnModificarForm").addEventListener("click", modificarDatos);
+  document
+    .querySelector("#btnModificarForm")
+    .addEventListener("click", modificarDatos);
 }
 
 let sistema = new Sistema();
@@ -34,7 +36,7 @@ function login() {
 
 function cerrarSesion() {
   mostrarDivPrincipal("ingreso");
-  sistema.logoutRealizado(); 
+  sistema.logoutRealizado();
 }
 
 function registro() {
@@ -101,14 +103,18 @@ function buscadorCedula() {
       "La cedula no esta censada";
   } else {
     mostrarDiv("modificarDeDatos");
-    document.querySelector("#nombre1").value = sistema.buscarCedula(cedula).nombre;
-    document.querySelector("#apellido1").value = sistema.buscarCedula(cedula).apellido;
+    document.querySelector("#nombre1").value =
+      sistema.buscarCedula(cedula).nombre;
+    document.querySelector("#apellido1").value =
+      sistema.buscarCedula(cedula).apellido;
     document.querySelector("#edad1").value = sistema.buscarCedula(cedula).edad;
+    document.querySelector("#cedula1").value =
+      sistema.buscarCedula(cedula).cedula;
     document.querySelector("#cedula1").disabled = true;
-    document.querySelector("#ocupacion1").value = sistema.buscarCedula(cedula).ocupacion;
-    document.querySelector("#departamento1").value = sistema.buscarCedula(cedula).departamento;
-    
-    
+    document.querySelector("#ocupacion1").value =
+      sistema.buscarCedula(cedula).ocupacion;
+    document.querySelector("#departamento1").value =
+      sistema.buscarCedula(cedula).departamento;
   }
 }
 
@@ -153,11 +159,11 @@ function datosCenso() {
   } else {
     sistema.agregarCenso(nuevoCenso);
     alert("Datos ingresados correctamente");
-    mostrarDivPrincipal("buscardorCedulaInvitado")
+    mostrarDivPrincipal("buscardorCedulaInvitado");
   }
 }
 
-function modificarDatos(){
+function modificarDatos() {
   let nombreCenso = document.querySelector("#nombre1").value.trim();
   let apellidoCenso = document.querySelector("#apellido1").value.trim();
   let edadCenso = document.querySelector("#edad1").value.trim();
@@ -195,6 +201,6 @@ function modificarDatos(){
   } else {
     sistema.agregarCenso(nuevoCenso);
     alert("Datos ingresados correctamente");
-    mostrarDivPrincipal("buscardorCedulaInvitado")
+    mostrarDivPrincipal("buscardorCedulaInvitado");
   }
 }
