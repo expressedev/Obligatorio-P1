@@ -13,9 +13,13 @@ function inicio() {
     .addEventListener("click", ingresoDatosNuevoInvitado);
   document.querySelector("#btnDatosForm").addEventListener("click", datosCenso);
   document.querySelector("#btnLogout").addEventListener("click", cerrarSesion);
+  
   document
     .querySelector("#btnModificarForm")
     .addEventListener("click", modificarDatos);
+    document.querySelector("#btnCensarPersona").addEventListener("click", datosNuevoCensoCensista);
+    document.querySelector("#btnNuevoCenso").addEventListener("click", ingresarCensoCensista );
+    document.querySelector("#btnRegresar").addEventListener("click", regresoApantallaPrincipal);
 }
 
 let sistema = new Sistema();
@@ -37,6 +41,9 @@ function login() {
 function cerrarSesion() {
   mostrarDivPrincipal("ingreso");
   sistema.logoutRealizado();
+}
+function datosNuevoCensoCensista(){
+  mostrarDivPrincipal("ingresoDatosCensista");
 }
 
 function registro() {
@@ -204,4 +211,53 @@ function modificarDatos() {
     alert("Datos ingresados correctamente");
     mostrarDivPrincipal("buscardorCedulaInvitado");
   }
+}
+
+
+function regresoApantallaPrincipal(){
+  mostrarDivPrincipal("perfilCensista");
+}
+function ingresarCensoCensista(){
+  let nombreCenso = document.querySelector("#nombre10").value.trim();
+  let apellidoCenso = document.querySelector("#apellido10").value.trim();
+  let edadCenso = document.querySelector("#edad10").value.trim();
+  let cedulaCenso = document.querySelector("#cedula10").value.trim();
+  let ocupacionCenso = document.querySelector("#ocupacion10").value.trim();
+  let departamentoCenso = document.querySelector("#departamento10").value.trim();
+  document.querySelector("#nombre10").value = "";
+  document.querySelector("#apellido10").value = "";
+  document.querySelector("#edad10").value = "";
+  document.querySelector("#cedula10").value = "";
+  document.querySelector("#ocupacion10").value = "";
+  document.querySelector("#departamento10").value = "";
+
+  let nuevoCenso = new Censo(
+    nombreCenso,
+    apellidoCenso,
+    edadCenso,
+    cedulaCenso,
+    ocupacionCenso,
+    departamentoCenso,
+    false
+  );
+  if (
+    nombreCenso.length === 0 ||
+    apellidoCenso.length === 0 ||
+    edadCenso.length === 0 ||
+    cedulaCenso.length === 0
+  ) {
+    alert("Todos los campos son obligatorios");
+  } else if (edadCenso < 0 || edadCenso > 120) {
+    alert("La edad tiene que estar entre 0 y 120");
+  } else if (cedulaCenso < 1000000 || edadCenso.length > 99999999) {
+    alert("La cedula tiene que ser valida");
+  } else if (ocupacionCenso === "") {
+    alert("Seleccione Ocupacion");
+  } else if (departamentoCenso === "") {
+    alert("Seleccione Departamento");
+  } else {
+    sistema.agregarCenso(nuevoCenso);
+    alert("Datos ingresados correctamente");
+  }
+
 }
