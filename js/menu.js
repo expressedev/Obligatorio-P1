@@ -4,6 +4,7 @@ function ocultarDivs() {
   document.querySelector("#formularioInvitado").style.display = "none";
   document.querySelector("#ingresoDeDatos").style.display = "none";
   document.querySelector("#buscardorCedulaInvitado").style.display = "none";
+  document.querySelector("#modificarDeDatos").style.display = "none";
 }
 
 function mostrarDivPrincipal(id) {

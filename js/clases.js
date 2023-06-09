@@ -96,7 +96,11 @@
   agregarCenso(unCenso) {
     this.censos.push(unCenso);
   }
+  modificarCenso(cedula){
+    this.buscarCedula
+  }
 }
+  
 
 class Usuario {
   constructor(nombre, usuario, contraseña) {
