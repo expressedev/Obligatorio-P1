@@ -163,6 +163,7 @@ function datosCenso() {
   }
 }
 
+  //VER CON PROFESOR COMO REEMPLAZAR
 function modificarDatos() {
   let nombreCenso = document.querySelector("#nombre1").value.trim();
   let apellidoCenso = document.querySelector("#apellido1").value.trim();
@@ -199,7 +200,7 @@ function modificarDatos() {
   } else if (departamentoCenso === "") {
     alert("Seleccione Departamento");
   } else {
-    sistema.agregarCenso(nuevoCenso);
+    sistema.modificarCenso(nuevoCenso); // esto cambiarlo por el de modificar usuario en clases
     alert("Datos ingresados correctamente");
     mostrarDivPrincipal("buscardorCedulaInvitado");
   }
