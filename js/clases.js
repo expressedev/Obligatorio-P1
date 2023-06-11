@@ -1,6 +1,40 @@
 class Sistema {
   constructor() {
-    this.usuarios = [];
+    this.usuarios = []; //El this aca se usa para definir una propiedad
+    this.censos = [];
+    this.agregarUsuarioPrueba();
+    this.agregarCensoPrueba();
+    this.usuarioLogueado = null;
+  }
+  agregarUsuarioPrueba() {
+    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123")); //En este caso el this se utiliza para acceder a una propiedad
+    this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123"));
+    this.usuarios.push(new Usuario("Guille", "Guille", "Hola123"));
+  }
+
+  agregarCensoPrueba() {
+    this.censos.push(
+      new Censo(
+        "Pedro",
+        "Aznarez",
+        "20",
+        49758675,
+        "Montevideo",
+        "Independiente",
+        false,
+        null
+      ),
+      new Censo(
+        "Maxi",
+        "Navarro",
+        "20",
+        49758672,
+        "Montevideo",
+        "Independiente",
+        false,
+        null
+      )
+    );
   }
   agregarUsuario(unUsuario) {
     this.usuarios.push(unUsuario);
@@ -8,29 +42,86 @@ class Sistema {
   obtenerUsuarios() {
     return this.usuarios;
   }
-
-  // Ver la clase o ver luego que no esta referenciado que el profe ya estaba yendo al palo
-  usuarioRepetido(nombre){
-    let estaRepetido = false;
-    for(let i = 0; i< this.usuarios.length; i++){
+  buscarUsuario(usuario) {
+    let usuarioB = null;
+    for (let i = 0; i < this.usuarios.length; i++) {
       let usuarioActual = this.usuarios[i];
-      if(usuarioActual.usuario === nombreDeUsuario){ //Ver aca los nombres de nuestras variables principalmente nombreDeUsuario
-        estaRepetido = true;
+      if (usuarioActual.usuario.toLowerCase() === usuario.toLowerCase()) {
+        usuarioB = usuarioActual;
       }
     }
-    return estaRepetido;
+    return usuarioB;
+  }
+  existeUsuario(nom) {
+    let existe = false;
+    let buscar = this.buscarUsuario(nom);
+    if (buscar != null) {
+      existe = true;
+    }
+    return existe;
   }
 
-// Ver la clase o ver luego que no esta referenciado que el profe ya estaba yendo al palo
-  loginValido(nombreDeUsuario, pass){   //ver variables nuestras comparadas con las del profe que segundo esta alguna mal!
-    let loginOk = false;
-    for(let i = 0; i< this.usuarios.length && !loginOk; i++){
+  loginRealizado(nombreDeUsuario, pass) {
+    let login = false;
+    for (let i = 0; i < this.usuarios.length && !login; i++) {
       let usuarioActual = this.usuarios[i];
-      if(usuarioActual.usuario.ToLowerCase() === nombreDeUsuario.ToLowerCase() && usuarioActual.password === pas){ //Ver aca los nombres de nuestras variables principalmente nombreDeUsuario
-        loginOk = true;
+      if (
+        usuarioActual.usuario.toLowerCase() === nombreDeUsuario.toLowerCase() &&
+        usuarioActual.contraseña === pass
+      ) {
+        login = true;
+        this.usuarioLogueado = usuarioActual;
       }
     }
-    return loginOk;
+    return login;
+  }
+  logoutRealizado() {
+    this.usuarioLogueado = null;
+  }
+
+  buscarCedula(cedula) {
+    let cedulaBuscada = null;
+    for (let i = 0; i < this.censos.length && !cedulaBuscada; i++) {
+      let cedulaAcutal = this.censos[i];
+      if (cedulaAcutal.cedula === cedula) {
+        cedulaBuscada = cedulaAcutal;
+      }
+    }
+    return cedulaBuscada;
+  }
+
+  contarDepartamento(departamento) {
+    let departamentoBuscada = null;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length && !departamentoBuscada; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (departamentoAcutal.departamento === departamento) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  obtenerCensos() {
+    return this.censos;
+  }
+  agregarCenso(unCenso) {
+    this.censos.push(unCenso);
+  }
+
+  //VER CON PROFESOR COMO REEMPLAZAR
+  modificarCenso(nombre, apellido, edad, cedula, departamento, ocupacion) {
+    for (let i = 0; i < this.censos.length; i++) {
+      if (cedula === this.censos[i].cedula) {
+        this.buscarCedula.nombre = nombre;
+        this.buscarCedula.apellido = apellido;
+        this.buscarCedula.edad = edad;
+        this.buscarCedula.cedula = cedula;
+        this.buscarCedula.departamento = departamento;
+        this.buscarCedula.ocupacion = ocupacion;
+      }
+    }
   }
 }
 
@@ -41,7 +132,3 @@ class Usuario {
     this.contraseña = contraseña;
   }
 }
-
-
-// Cuando entras al usuario logeado osea ensista.. que te muestre arriba el usuario logueado.
-// tres div principales.. uno de registro y logeo, otro de sensista y otro del invitado.
