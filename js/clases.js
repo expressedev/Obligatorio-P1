@@ -90,6 +90,19 @@ class Sistema {
     return cedulaBuscada;
   }
 
+  contarDepartamento(departamento) {
+    let departamentoBuscada = null;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length && !departamentoBuscada; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (departamentoAcutal.departamento === departamento) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
   obtenerCensos() {
     return this.censos;
   }

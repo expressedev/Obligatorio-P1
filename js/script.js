@@ -4,6 +4,8 @@ function inicio() {
   document.querySelector("#btnIngreso").addEventListener("click", login);
   document.querySelector("#btnRegistrarse").addEventListener("click", registro);
   mostrarDivPrincipal("ingreso");
+  ocultarDiv("ingresoDatosCensista");
+  ocultarDiv("modificarDatosCensista");
   document.querySelector("#btnInvitado").addEventListener("click", invitado);
   document
     .querySelector("#btnBuscarCed")
@@ -12,6 +14,7 @@ function inicio() {
     .querySelector("#btnIngresoDatos")
     .addEventListener("click", ingresoDatosNuevoInvitado);
   document.querySelector("#btnDatosForm").addEventListener("click", datosCenso);
+  document.querySelector("#btnVisualizarInforEstad").addEventListener("click", infoEstadisticaCensista);
   document.querySelector("#btnLogout").addEventListener("click", cerrarSesion);
   
   document
@@ -20,6 +23,8 @@ function inicio() {
     document.querySelector("#btnCensarPersona").addEventListener("click", datosNuevoCensoCensista);
     document.querySelector("#btnNuevoCenso").addEventListener("click", ingresarCensoCensista );
     document.querySelector("#btnRegresar").addEventListener("click", regresoApantallaPrincipal);
+    document.querySelector("#btnBuscarPorCed").addEventListener("click", buscarPorCedulaCensista);
+    document.querySelector("#btnRegreso").addEventListener("click", regresoCensista);
 }
 
 let sistema = new Sistema();
@@ -124,6 +129,41 @@ function buscadorCedula() {
       sistema.buscarCedula(cedula).departamento;
   }
 }
+function buscarPorCedulaCensista(){
+  let cedula = Number(document.querySelector("#buscarPorCedula").value);
+  let buscar = sistema.buscarCedula(cedula);
+  if (buscar === null) {
+    document.querySelector("#respuestaAbusqueda").innerHTML =
+      "La cedula no esta censada";
+  } else {
+    mostrarDivPrincipal("modificarDatosCensista");
+    document.querySelector("#nombre101").value =
+      sistema.buscarCedula(cedula).nombre;
+    document.querySelector("#apellido101").value =
+      sistema.buscarCedula(cedula).apellido;
+    document.querySelector("#edad101").value = sistema.buscarCedula(cedula).edad;
+    document.querySelector("#cedula101").value =
+      sistema.buscarCedula(cedula).cedula;
+    document.querySelector("#cedula101").disabled = true;
+    document.querySelector("#ocupacion101").value =
+      sistema.buscarCedula(cedula).ocupacion;
+    document.querySelector("#departamento101").value =
+      sistema.buscarCedula(cedula).departamento;
+      document.querySelector("#validado").value = 
+      sistema.buscarCedula(cedula).validado; 
+  }
+}
+function regresoCensista(){
+  mostrarDivPrincipal("perfilCensista");
+  ocultarDiv("ingresoDatosCensista");
+}
+
+function infoEstadisticaCensista(){
+  document.querySelector("#totalPersonasCensadas").innerHTML = "El total de personas censadas es: " + sistema.censos.length
+  mostrarDiv("mostrarTabla")
+  let montevideo = document.querySelector("#montevideo").value
+  document.querySelector("#cantMontevideo").innerHTML =  sistema.contarDepartamento(montevideo) 
+}
 
 function datosCenso() {
   let nombreCenso = document.querySelector("#nombre").value.trim();
@@ -216,6 +256,8 @@ function modificarDatos() {
 
 function regresoApantallaPrincipal(){
   mostrarDivPrincipal("perfilCensista");
+  ocultarDiv("ingresoDatosCensista");
+  
 }
 function ingresarCensoCensista(){
   let nombreCenso = document.querySelector("#nombre10").value.trim();
@@ -261,3 +303,5 @@ function ingresarCensoCensista(){
   }
 
 }
+
+

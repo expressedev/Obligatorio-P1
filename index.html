@@ -84,8 +84,34 @@
           value="Visualizar Info Estadistica"
         /><br />
       </div>
-
-      <p></p>
+      <p id="totalPersonasCensadas"></p>
+      <div id="mostrarTabla">
+      <table border="1px">
+        <thead id="tablaDepartamentos">
+          <tr>
+            <th>Departamento</th>
+            <th>Cantidad de Personas Censadas</th>
+            <th>% pendiente de validar</th>
+          </tr>
+          <tr>
+            <td id="montevideo">Montevideo</td>
+            <td id="cantMontevideo"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Maldonado</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Canelones</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> <br>
+    </div> <br>
       <div>
         <input
           type="text"
@@ -96,11 +122,6 @@
         <input type="button" id="btnBuscarPorCed" value="Buscar Usuario" />
         <p id="respuestaAbusqueda"></p>
         <br />
-      </div>
-      <div>
-        <h3>Los datos del usuario pre cargado son los siguientes:</h3>
-        <input type="button" id="btnCorrecto" value="Datos Correctos" />
-        <input type="button" id="btnIncorrecto" value="Modificar Datos" />
       </div>
       <div>
         <h3>Reasignar Persona</h3>
@@ -155,19 +176,6 @@
         <input type="button" id="verInfoDelDpto" value="Ver informacion" />
         <p id="mostrarInfoPorDpto"></p>
         <br /><br />
-        <table border="1px">
-          <thead id="tablaDepartamentos">
-            <tr>
-              <th>Departamento</th>
-              <th>Personas censadas</th>
-              <th>% pendiente de validar</th>
-              <th>% pendiente de validar</th>
-              <th>% de menores censados</th>
-              <th>% de mayores censados</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
       </div>
     </div>
 
@@ -403,5 +411,57 @@
       <input type="button" value="Ingresar nuevos datos" id="btnNuevoCenso" />
       <input type="button" value="Regresar a Pantalla Principal" id="btnRegresar" />
     </div>
+
+    <div id="modificarDatosCensista">
+      <h3>MODIFICAR DATOS</h3>
+      <label for="nombre101">Ingresar Nombre:</label>
+      <input type="text" id="nombre101" /> <br />
+      <br />
+      <label for="apellido101">Ingresar Apellido:</label>
+      <input type="text" id="apellido101" /> <br />
+      <br />
+      <label for="edad101">Ingresar Edad:</label>
+      <input type="number" id="edad101" /> <br />
+      <br />
+      <label for="cedula101">Ingresar su Cedula:</label>
+      <input type="text" id="cedula101" /> <br />
+      <br />
+      <label for="ocupacion101">Seleccione su ocupacion:</label>
+      <select id="ocupacion101">
+        <option disabled selected></option>
+        <option id="dependiente101">Dependiente</option>
+        <option id="independiente101">Independiente</option>
+        <option id="estudiante101">Estudiante</option>
+        <option id="noTrabaja101">No trabaja</option></select
+      ><br /><br />
+
+      <label for="departamento101">Seleccione departamento</label>
+      <select id="departamento101">
+        <option selected disabled></option>
+        <option id="0101">Montevideo</option>
+        <option id="0201">Canelones</option>
+        <option id="0301">Cerro Largo</option>
+        <option id="0401">Maldonado</option>
+        <option id="0501">Flores</option>
+        <option id="0601">Florida</option>
+        <option id="0701">Salto</option>
+        <option id="0801">Paysandu</option>
+        <option id="0901">Rocha</option>
+        <option id="01001">Artigas</option>
+        <option id="01101">Colonia</option>
+        <option id="01201">Durazno</option>
+        <option id="01301">Lavalleja</option>
+        <option id="01401">Rio Negro</option>
+        <option id="01501">Rivera</option>
+        <option id="01601">San jose</option>
+        <option id="01701">Soriano</option>
+        <option id="01801">Tacuarembo</option>
+        <option id="01901">Treinta y Tres</option></select
+      ><br /><br />
+      <label for="validado">Censo Validado?</label>
+      <input type="text" id="validado">
+      <input type="button" value="Modificar Datos" id="btnModificarFormCensista" /> <br>
+      <input type="button" value="Regresar" id="btnRegreso" />
+
   </body>
 </html>
