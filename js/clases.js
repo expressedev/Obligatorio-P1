@@ -29,7 +29,17 @@ class Sistema {
         "Navarro",
         "20",
         49758672,
-        "Montevideo",
+        "Canelones",
+        "Independiente",
+        false,
+        null
+      ),
+      new Censo(
+        "Juan",
+        "Navarro",
+        "22",
+        49758674,
+        "Canelones",
         "Independiente",
         false,
         null
@@ -91,9 +101,9 @@ class Sistema {
   }
 
   contarDepartamento(departamento) {
-    let departamentoBuscada = null;
+    let departamentoBuscada;
     let contadorDepartamento = 0;
-    for (let i = 0; i < this.censos.length && !departamentoBuscada; i++) {
+    for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (departamentoAcutal.departamento === departamento) {
         departamentoBuscada = departamentoAcutal;
@@ -132,3 +142,31 @@ class Usuario {
     this.contraseña = contraseña;
   }
 }
+
+class Censo {
+  constructor(
+    nombre,
+    apellido,
+    edad,
+    cedula,
+    departamento,
+    ocupacion,
+    validado,
+    censita
+  ) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = edad;
+    this.cedula = cedula;
+    this.departamento = departamento;
+    this.ocupacion = ocupacion;
+    this.validado = validado;
+    this.censita = censita;
+  }
+}
+
+// Clase senso para probar
+// El profe no haria una clase invitado
+// al invitado hay que hacerle un boton de buscar por la cedula y que le muestre todos los datos precargados
+// tres opciones, no encuentra la cedula porque no pre cargo, la otra es que este pero no aprobado, y sino esta aprobado y fin.
+// En el perfil censita, para los preaprobados, podemos tener un buscador por cedula, una lista.
