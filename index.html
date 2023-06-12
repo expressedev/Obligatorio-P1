@@ -174,13 +174,40 @@
           <option id="A19">Treinta y Tres</option></select
         ><br />
         <input type="button" id="verInfoDelDpto" value="Ver informacion" />
+        <input type="button" id="ocultarInfoDelDpto" value="Ocultar informacion" />
         <p id="mostrarInfoPorDpto"></p>
         <br /><br />
+        <div id="tablaMenoresMayores">
+          <!-- <table>
+            <thead id="tablaPorDepartamento">
+              <tr>
+                <th>Departamento</th>
+                <th>Personas Mayores de Edad</th>
+                <th>Personas Menores de Edad</th>
+              </tr>
+              <tr>
+                <td id="montevideo">Montevideo</td>
+                <td id="cantMontevideoMayores"></td>
+                <td id="cantMontevideoMenores"></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td id="canelones">Canelones</td>
+                <td id="cantCanelonesMayores"></td>
+                <td id="cantCanelonesMenores"></td>
+                <td></td>
+              </tr>
+            </thead>
+          </table> <br> -->
+        </div>
       </div>
     </div>
 
     <!-- Pantalla del Perfil Invitado -->
     <div id="buscardorCedulaInvitado">
+      <h3>Hola Invitado</h3>
+      <p>Desea volver a la pantalla principal?</p>
+      <input type="button" value="Volver" id="volverLogin"><br><br>
       <input type="number" id="inputCedulaInvitado" />
       <input type="button" id="btnBuscarCed" value="Buscar por Cedula" />
       <br /><br />
@@ -189,6 +216,11 @@
       >
       <input type="button" id="btnIngresoDatos" value="Ingresar Datos" />
       <p id="cedulabuscada"></p>
+      <input type="button" value="Mostrar Reporte del Censo" id="mostrarInforme">
+      <input type="button" value="Ocultar Reporte del Censo" id="ocultarInforme">
+      <div id="tablaReporte">
+
+      </div>
     </div>
     <div id="formularioInvitado">
       <h3>INGRESAR DATOS PARA EL CENSO</h3>
@@ -311,6 +343,7 @@
         <option id="19">Treinta y Tres</option></select
       ><br /><br />
       <input type="button" value="Ingresar Datos" id="btnDatosForm" />
+      <input type="button" value="Volver" id="volverInvitado" />
     </div>
 
     <div id="modificarDeDatos">

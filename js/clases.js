@@ -43,6 +43,56 @@ class Sistema {
         "Independiente",
         false,
         null
+      ),
+      new Censo(
+        "Joaquin",
+        "Suarez",
+        "11",
+        49758673,
+        "Canelones",
+        "Dependiente",
+        false,
+        null
+      ),
+      new Censo(
+        "Joaquina",
+        "Rodriguez",
+        "21",
+        49758663,
+        "Soriano",
+        "Dependiente",
+        false,
+        null
+      ),
+      new Censo(
+        "Hernan",
+        "Arias",
+        "21",
+        49758661,
+        "Montevideo",
+        "No trabaja",
+        false,
+        null
+      ),
+      new Censo(
+        "Marcos",
+        "Esteban",
+        "12",
+        49758661,
+        "Canelones",
+        "No trabaja",
+        false,
+        null
+      ),
+      new Censo(
+        "Luis",
+        "Suarez",
+        "31",
+        49758661,
+        "Canelones",
+        "Estudiante",
+        false,
+        null
       )
     );
   }
@@ -106,6 +156,102 @@ class Sistema {
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (departamentoAcutal.departamento === departamento) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarMayores(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.edad >= 18
+      ) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarMenores(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.edad < 18
+      ) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarDependiente(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.ocupacion == "Dependiente"
+      ) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarIndependiente(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.ocupacion == "Independiente"
+      ) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarEstudiante(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.ocupacion == "Estudiante"
+      ) {
+        departamentoBuscada = departamentoAcutal;
+        contadorDepartamento = contadorDepartamento + 1;
+      }
+    }
+    return contadorDepartamento;
+  }
+
+  contarNoTrabajan(departamento) {
+    let departamentoBuscada;
+    let contadorDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.ocupacion == "No trabaja"
+      ) {
         departamentoBuscada = departamentoAcutal;
         contadorDepartamento = contadorDepartamento + 1;
       }

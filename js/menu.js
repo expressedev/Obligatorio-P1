@@ -6,6 +6,8 @@ function ocultarDivs() {
   document.querySelector("#buscardorCedulaInvitado").style.display = "none";
   document.querySelector("#modificarDeDatos").style.display = "none";
   document.querySelector("#mostrarTabla").style.display = "none";
+  document.querySelector("#ingresoDatosCensista").style.display = "none";
+  document.querySelector("#modificarDatosCensista").style.display = "none";
 }
 
 function mostrarDivPrincipal(id) {

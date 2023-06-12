@@ -4,15 +4,17 @@ function inicio() {
   document.querySelector("#btnIngreso").addEventListener("click", login);
   document.querySelector("#btnRegistrarse").addEventListener("click", registro);
   mostrarDivPrincipal("ingreso");
-  ocultarDiv("ingresoDatosCensista");
-  ocultarDiv("modificarDatosCensista");
   document.querySelector("#btnInvitado").addEventListener("click", invitado);
+  document.querySelector("#volverLogin").addEventListener("click", volverLogin);
   document
     .querySelector("#btnBuscarCed")
     .addEventListener("click", buscadorCedula);
   document
     .querySelector("#btnIngresoDatos")
     .addEventListener("click", ingresoDatosNuevoInvitado);
+  document
+    .querySelector("#volverInvitado")
+    .addEventListener("click", volverInvitado);
   document.querySelector("#btnDatosForm").addEventListener("click", datosCenso);
   document
     .querySelector("#btnVisualizarInforEstad")
@@ -37,9 +39,118 @@ function inicio() {
   document
     .querySelector("#btnRegreso")
     .addEventListener("click", regresoCensista);
+  document
+    .querySelector("#verInfoDelDpto")
+    .addEventListener("click", infoPorDepartamento);
+  document
+    .querySelector("#ocultarInfoDelDpto")
+    .addEventListener("click", ocultarInfoPorDepartamento);
+  document
+    .querySelector("#mostrarInforme")
+    .addEventListener("click", mostrarInforme);
+  document
+    .querySelector("#ocultarInforme")
+    .addEventListener("click", ocultarInforme);
 }
 
 let sistema = new Sistema();
+
+function infoPorDepartamento() {
+  let departamento = document.querySelector("#infoDelDepartamento").value;
+  let cantDepartamentoMayores = (
+    (sistema.contarMayores(departamento) /
+      sistema.contarDepartamento(departamento)) *
+    100
+  ).toFixed(2);
+  let cantDepartamentoMenores = (
+    (sistema.contarMenores(departamento) /
+      sistema.contarDepartamento(departamento)) *
+    100
+  ).toFixed(2);
+  let tabla = `<table border="1px">
+  <thead id="tablaPorDepartamento">
+    <tr>
+      <th>Departamento</th>
+      <th>Porcentaje de Personas Mayores de Edad</th>
+      <th>Porcentaje de Personas Menores de Edad</th>
+    </tr>
+    <tr>
+      <td>${departamento}</td>
+      <td id="cantMontevideoMayores">${cantDepartamentoMayores}</td>
+      <td id="cantMontevideoMenores">${cantDepartamentoMenores}</td>
+    </tr>
+  </thead>
+</table>`;
+  document.querySelector("#tablaMenoresMayores").innerHTML = tabla;
+  mostrarDiv("tablaMenoresMayores");
+}
+
+function ocultarInfoPorDepartamento() {
+  ocultarDiv("tablaMenoresMayores");
+}
+
+function mostrarInforme() {
+  let porcentaje = sistema.censos.length;
+  let montevideo = "Montevideo";
+  let montevideoDependientes = sistema.contarDependiente(montevideo);
+  let montevideoIndpendientes = sistema.contarIndependiente(montevideo);
+  let montevideoEstudiante = sistema.contarEstudiante(montevideo);
+  let montevideoNoTrabajan = sistema.contarNoTrabajan(montevideo);
+  let totalMontevideo = sistema.contarDepartamento(montevideo);
+  let canelones = "Canelones";
+  let canelonesDependientes = sistema.contarDependiente(canelones);
+  let canelonesIndpendientes = sistema.contarIndependiente(canelones);
+  let canelonesEstudiante = sistema.contarEstudiante(canelones);
+  let canelonesNoTrabajan = sistema.contarNoTrabajan(canelones);
+  let totalCanelones = sistema.contarDepartamento(canelones);
+
+  let tabla = `<table border="1px">
+  <thead>
+    <tr>
+      <th>Departamento</th>
+      <th>Personas Dependientes</th>
+      <th>Personas Independientes</th>
+      <th>Personas que Estudian</th>
+      <th>Personas que No Trabajan</th>
+      <th>Total Personas</th>
+      <th>Porcentaje del total del censo</th>
+
+    </tr>
+    <tr>
+      <td>${montevideo}</td>
+      <td id="cantMontevideoDependientes">${montevideoDependientes}</td>
+      <td id="cantMontevideoIndependientes">${montevideoIndpendientes}</td>
+      <td id="cantMontevideoIndependientes">${montevideoEstudiante}</td>
+      <td id="cantMontevideoIndependientes">${montevideoNoTrabajan}</td>
+      <td id="cantMontevideoTotal">${totalMontevideo}</td>
+      <td id="cantMontevideoPorcentaje">${(
+        (totalMontevideo / porcentaje) *
+        100
+      ).toFixed(2)}%</td>
+    
+    </tr>
+    <tr>
+      <td>${canelones}</td>
+      <td id="cantCanelonesDependientes">${canelonesDependientes}</td>
+      <td id="cantCanelonesIndependientes">${canelonesIndpendientes}</td>
+      <td id="cantMontevideoIndependientes">${canelonesEstudiante}</td>
+      <td id="cantMontevideoIndependientes">${canelonesNoTrabajan}</td>
+      <td id="cantCanelonesTotal">${totalCanelones}</td>
+      <td id="cantCanelonesPorcentaje">${(
+        (totalCanelones / porcentaje) *
+        100
+      ).toFixed(2)}%</td>
+      
+    </tr>
+  </thead>
+</table>`;
+  document.querySelector("#tablaReporte").innerHTML = tabla;
+  mostrarDiv("tablaReporte");
+}
+
+function ocultarInforme() {
+  ocultarDiv("tablaReporte");
+}
 
 function login() {
   let usuario = document.querySelector("#usuario").value.trim();
@@ -58,6 +169,9 @@ function login() {
 function cerrarSesion() {
   mostrarDivPrincipal("ingreso");
   sistema.logoutRealizado();
+}
+function volverLogin() {
+  mostrarDivPrincipal("ingreso");
 }
 function datosNuevoCensoCensista() {
   mostrarDivPrincipal("ingresoDatosCensista");
@@ -104,6 +218,11 @@ function invitado() {
 
 function ingresoDatosNuevoInvitado() {
   mostrarDivPrincipal("ingresoDeDatos");
+  ocultarDiv("tablaReporte");
+}
+
+function volverInvitado() {
+  mostrarDivPrincipal("buscardorCedulaInvitado");
 }
 
 function passwordIncompleta(unPass) {
@@ -175,6 +294,9 @@ function infoEstadisticaCensista() {
   document.querySelector("#totalPersonasCensadas").innerHTML =
     "El total de personas censadas es: " + sistema.censos.length;
   mostrarDiv("mostrarTabla");
+  let montevideo = "Montevideo";
+  document.querySelector("#cantMontevideo").innerHTML =
+    sistema.contarDepartamento(montevideo);
   let canelones = "Canelones";
   document.querySelector("#cantCanelones").innerHTML =
     sistema.contarDepartamento(canelones);
@@ -199,8 +321,8 @@ function datosCenso() {
     apellidoCenso,
     edadCenso,
     cedulaCenso,
-    ocupacionCenso,
     departamentoCenso,
+    ocupacionCenso,
     false
   );
   if (
