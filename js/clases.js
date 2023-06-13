@@ -150,6 +150,14 @@ class Sistema {
     return cedulaBuscada;
   }
 
+  cedulaValida(cedula){
+    for(let i = 0; i < cedula.length; i++){
+    cedula = cedula.replace('.', '')
+    cedula = cedula.replace('-', '')
+    }
+    return cedula
+}
+
   contarDepartamento(departamento) {
     let departamentoBuscada;
     let contadorDepartamento = 0;
@@ -210,6 +218,7 @@ class Sistema {
     }
     return contadorDepartamento;
   }
+
 
   contarIndependiente(departamento) {
     let departamentoBuscada;

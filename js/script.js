@@ -307,6 +307,7 @@ function datosCenso() {
   let apellidoCenso = document.querySelector("#apellido").value.trim();
   let edadCenso = document.querySelector("#edad").value.trim();
   let cedulaCenso = document.querySelector("#cedula").value.trim();
+  let cedulaValidada = sistema.cedulaValida(cedulaCenso)
   let ocupacionCenso = document.querySelector("#ocupacion").value.trim();
   let departamentoCenso = document.querySelector("#departamento").value.trim();
   document.querySelector("#nombre").value = "";
@@ -315,12 +316,12 @@ function datosCenso() {
   document.querySelector("#cedula").value = "";
   document.querySelector("#ocupacion").value = "";
   document.querySelector("#departamento").value = "";
-
+  console.log(cedulaValidada);
   let nuevoCenso = new Censo(
     nombreCenso,
     apellidoCenso,
     edadCenso,
-    cedulaCenso,
+    cedulaValidada,
     departamentoCenso,
     ocupacionCenso,
     false
@@ -353,12 +354,12 @@ function modificarDatos() {
   let apellidoCenso = document.querySelector("#apellido1").value.trim();
   let edadCenso = document.querySelector("#edad1").value.trim();
   let cedulaCenso = Number(document.querySelector("#cedula1").value);
+  
   let ocupacionCenso = document.querySelector("#ocupacion1").value.trim();
   let departamentoCenso = document.querySelector("#departamento1").value.trim();
 
   let censo = sistema.buscarCedula(cedulaCenso);
-  console.log(censo);
-
+  console.log(cedulaValidada)
   if (
     nombreCenso.length === 0 ||
     apellidoCenso.length === 0 ||
@@ -377,8 +378,8 @@ function modificarDatos() {
       apellidoCenso,
       edadCenso,
       cedulaCenso,
-      ocupacionCenso,
-      departamentoCenso
+      departamentoCenso,
+      ocupacionCenso
     );
     alert("modificaste tus datos");
     ocultarDiv("modificarDeDatos");
