@@ -352,25 +352,13 @@ function modificarDatos() {
   let nombreCenso = document.querySelector("#nombre1").value.trim();
   let apellidoCenso = document.querySelector("#apellido1").value.trim();
   let edadCenso = document.querySelector("#edad1").value.trim();
-  let cedulaCenso = document.querySelector("#cedula1").value.trim();
+  let cedulaCenso = Number(document.querySelector("#cedula1").value);
   let ocupacionCenso = document.querySelector("#ocupacion1").value.trim();
   let departamentoCenso = document.querySelector("#departamento1").value.trim();
-  document.querySelector("#nombre1").value = "";
-  document.querySelector("#apellido1").value = "";
-  document.querySelector("#edad1").value = "";
-  document.querySelector("#cedula1").value = "";
-  document.querySelector("#ocupacion1").value = "";
-  document.querySelector("#departamento1").value = "";
 
-  let nuevoCenso = new Censo(
-    nombreCenso,
-    apellidoCenso,
-    edadCenso,
-    cedulaCenso,
-    ocupacionCenso,
-    departamentoCenso,
-    false
-  );
+  let censo = sistema.buscarCedula(cedulaCenso);
+  console.log(censo);
+
   if (
     nombreCenso.length === 0 ||
     apellidoCenso.length === 0 ||
@@ -384,9 +372,16 @@ function modificarDatos() {
   } else if (departamentoCenso === "") {
     alert("Seleccione Departamento");
   } else {
-    sistema.modificarCenso(nuevoCenso); // esto cambiarlo por el de modificar usuario en clases
-    alert("Datos ingresados correctamente");
-    mostrarDivPrincipal("buscardorCedulaInvitado");
+    sistema.modificarCenso(
+      nombreCenso,
+      apellidoCenso,
+      edadCenso,
+      cedulaCenso,
+      ocupacionCenso,
+      departamentoCenso
+    );
+    alert("modificaste tus datos");
+    ocultarDiv("modificarDeDatos");
   }
 }
 

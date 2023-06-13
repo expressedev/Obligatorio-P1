@@ -266,18 +266,13 @@ class Sistema {
     this.censos.push(unCenso);
   }
 
-  //VER CON PROFESOR COMO REEMPLAZAR
   modificarCenso(nombre, apellido, edad, cedula, departamento, ocupacion) {
-    for (let i = 0; i < this.censos.length; i++) {
-      if (cedula === this.censos[i].cedula) {
-        this.buscarCedula.nombre = nombre;
-        this.buscarCedula.apellido = apellido;
-        this.buscarCedula.edad = edad;
-        this.buscarCedula.cedula = cedula;
-        this.buscarCedula.departamento = departamento;
-        this.buscarCedula.ocupacion = ocupacion;
-      }
-    }
+    let censo = this.buscarCedula(cedula);
+    censo.nombre = nombre;
+    censo.apellido = apellido;
+    censo.edad = edad;
+    censo.departamento = departamento;
+    censo.ocupacion = ocupacion;
   }
 }
 
