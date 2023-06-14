@@ -22,7 +22,7 @@ class Sistema {
         "Montevideo",
         "Independiente",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Maxi",
@@ -32,7 +32,7 @@ class Sistema {
         "Canelones",
         "Independiente",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Juan",
@@ -42,7 +42,7 @@ class Sistema {
         "Canelones",
         "Independiente",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Joaquin",
@@ -52,7 +52,7 @@ class Sistema {
         "Canelones",
         "Dependiente",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Joaquina",
@@ -62,7 +62,7 @@ class Sistema {
         "Soriano",
         "Dependiente",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Hernan",
@@ -72,7 +72,7 @@ class Sistema {
         "Montevideo",
         "No trabaja",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Marcos",
@@ -82,7 +82,7 @@ class Sistema {
         "Canelones",
         "No trabaja",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Luis",
@@ -92,7 +92,7 @@ class Sistema {
         "Canelones",
         "Estudiante",
         false,
-        Math.floor(Math.random() * this.usuarios.length + 1)
+        Math.floor(Math.random() * this.usuarios.length + 1)
       )
     );
   }
@@ -150,13 +150,24 @@ class Sistema {
     return cedulaBuscada;
   }
 
-  cedulaValida(cedula){
-    for(let i = 0; i < cedula.length; i++){
-    cedula = cedula.replace('.', '')
-    cedula = cedula.replace('-', '')
+  buscarId(id) {
+    let censos = [];
+    for (let i = 0; i < this.censos.length; i++) {
+      let censoActual = this.censos[i];
+      if (censoActual.id === id) {
+        censos.push(censoActual);
+      }
     }
-    return cedula
-}
+    return censos;
+  }
+
+  cedulaValida(cedula) {
+    for (let i = 0; i < cedula.length; i++) {
+      cedula = cedula.replace(".", "");
+      cedula = cedula.replace("-", "");
+    }
+    return cedula;
+  }
 
   contarDepartamento(departamento) {
     let departamentoBuscada;
@@ -219,7 +230,6 @@ class Sistema {
     return contadorDepartamento;
   }
 
-
   contarIndependiente(departamento) {
     let departamentoBuscada;
     let contadorDepartamento = 0;
@@ -275,13 +285,22 @@ class Sistema {
     this.censos.push(unCenso);
   }
 
-  modificarCenso(nombre, apellido, edad, cedula, departamento, ocupacion) {
+  modificarCenso(
+    nombre,
+    apellido,
+    edad,
+    cedula,
+    departamento,
+    ocupacion,
+    validado
+  ) {
     let censo = this.buscarCedula(cedula);
     censo.nombre = nombre;
     censo.apellido = apellido;
     censo.edad = edad;
     censo.departamento = departamento;
     censo.ocupacion = ocupacion;
+    censo.validado = validado;
   }
 }
 
@@ -290,7 +309,7 @@ class Usuario {
     this.nombre = nombre;
     this.usuario = usuario;
     this.contraseña = contraseña;
-    this.id = id
+    this.id = id;
   }
 }
 

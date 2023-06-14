@@ -72,6 +72,60 @@
           value="Consultar censos pre completados por validar"
           id="btnCensosPreCompletados"
         />
+        <div id="idCensos">
+          <br /><br /><select id="selectCensos"></select
+          ><input type="button" value="Modificar" id="btnModificar" />
+          <br /><br />
+        </div>
+        <div id="validarDatos">
+          <h3>MODIFICAR DATOS</h3>
+          <label for="nombre2">Ingresar Nombre:</label>
+          <input type="text" id="nombre2" /> <br />
+          <br />
+          <label for="apellido2">Ingresar Apellido:</label>
+          <input type="text" id="apellido2" /> <br />
+          <br />
+          <label for="edad2">Ingresar Edad:</label>
+          <input type="number" id="edad2" /> <br />
+          <br />
+          <label for="cedula2">Ingresar su Cedula:</label>
+          <input type="text" id="cedula2" /> <br />
+          <br />
+          <label for="ocupacion2">Seleccione su ocupacion:</label>
+          <select id="ocupacion2">
+            <option disabled selected></option>
+            <option id="dependiente2">Dependiente</option>
+            <option id="independiente2">Independiente</option>
+            <option id="estudiante2">Estudiante</option>
+            <option id="noTrabaja2">No trabaja</option></select
+          ><br /><br />
+
+          <label for="departamento2">Seleccione departamento</label>
+          <select id="departamento2">
+            <option selected disabled></option>
+            <option id="201">Montevideo</option>
+            <option id="202">Canelones</option>
+            <option id="203">Cerro Largo</option>
+            <option id="204">Maldonado</option>
+            <option id="205">Flores</option>
+            <option id="206">Florida</option>
+            <option id="207">Salto</option>
+            <option id="208">Paysandu</option>
+            <option id="209">Rocha</option>
+            <option id="2010">Artigas</option>
+            <option id="2011">Colonia</option>
+            <option id="2012">Durazno</option>
+            <option id="2013">Lavalleja</option>
+            <option id="2014">Rio Negro</option>
+            <option id="2015">Rivera</option>
+            <option id="2016">San jose</option>
+            <option id="2017">Soriano</option>
+            <option id="2018">Tacuarembo</option>
+            <option id="2019">Treinta y Tres</option></select
+          ><br /><br />
+          <input type="button" value="Validar Datos" id="btnValidarForm" />
+        </div>
+        <br /><br />
         <br />
         <input
           type="button"
@@ -86,32 +140,34 @@
       </div>
       <p id="totalPersonasCensadas"></p>
       <div id="mostrarTabla">
-      <table border="1px">
-        <thead id="tablaDepartamentos">
-          <tr>
-            <th>Departamento</th>
-            <th>Cantidad de Personas Censadas</th>
-            <th>% pendiente de validar</th>
-          </tr>
-          <tr>
-            <td id="montevideo">Montevideo</td>
-            <td id="cantMontevideo"></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Maldonado</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td id="canelones">Canelones</td>
-            <td id="cantCanelones"></td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table> <br>
-    </div> <br>
+        <table border="1px">
+          <thead id="tablaDepartamentos">
+            <tr>
+              <th>Departamento</th>
+              <th>Cantidad de Personas Censadas</th>
+              <th>% pendiente de validar</th>
+            </tr>
+            <tr>
+              <td id="montevideo">Montevideo</td>
+              <td id="cantMontevideo"></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Maldonado</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td id="canelones">Canelones</td>
+              <td id="cantCanelones"></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <br />
+      </div>
+      <br />
       <div>
         <input
           type="text"
@@ -174,7 +230,11 @@
           <option id="A19">Treinta y Tres</option></select
         ><br />
         <input type="button" id="verInfoDelDpto" value="Ver informacion" />
-        <input type="button" id="ocultarInfoDelDpto" value="Ocultar informacion" />
+        <input
+          type="button"
+          id="ocultarInfoDelDpto"
+          value="Ocultar informacion"
+        />
         <p id="mostrarInfoPorDpto"></p>
         <br /><br />
         <div id="tablaMenoresMayores">
@@ -207,7 +267,7 @@
     <div id="buscardorCedulaInvitado">
       <h3>Hola Invitado</h3>
       <p>Desea volver a la pantalla principal?</p>
-      <input type="button" value="Volver" id="volverLogin"><br><br>
+      <input type="button" value="Volver" id="volverLogin" /><br /><br />
       <input type="number" id="inputCedulaInvitado" />
       <input type="button" id="btnBuscarCed" value="Buscar por Cedula" />
       <br /><br />
@@ -216,11 +276,17 @@
       >
       <input type="button" id="btnIngresoDatos" value="Ingresar Datos" />
       <p id="cedulabuscada"></p>
-      <input type="button" value="Mostrar Reporte del Censo" id="mostrarInforme">
-      <input type="button" value="Ocultar Reporte del Censo" id="ocultarInforme">
-      <div id="tablaReporte">
-
-      </div>
+      <input
+        type="button"
+        value="Mostrar Reporte del Censo"
+        id="mostrarInforme"
+      />
+      <input
+        type="button"
+        value="Ocultar Reporte del Censo"
+        id="ocultarInforme"
+      />
+      <div id="tablaReporte"></div>
     </div>
     <div id="formularioInvitado">
       <h3>INGRESAR DATOS PARA EL CENSO</h3>
@@ -298,54 +364,54 @@
     </div>
     <div id="ingresoDeDatos">
       <form id="formIngresoDeDatos">
-      <h3>INGRESO DE DATOS</h3>
-      <label for="nombre">Ingresar Nombre:</label>
-      <input type="text" id="nombre" /> <br />
-      <br />
-      <label for="apellido">Ingresar Apellido:</label>
-      <input type="text" id="apellido" /> <br />
-      <br />
-      <label for="edad">Ingresar Edad:</label>
-      <input type="number" id="edad" /> <br />
-      <br />
-      <label for="cedula">Ingresar su Cedula:</label>
-      <input type="text" id="cedula" /> <br />
-      <br />
-      <label for="ocupacion">Seleccione su ocupacion:</label>
-      <select id="ocupacion">
-        <option disabled selected></option>
-        <option id="dependiente">Dependiente</option>
-        <option id="independiente">Independiente</option>
-        <option id="estudiante">Estudiante</option>
-        <option id="noTrabaja">No trabaja</option></select
-      ><br /><br />
+        <h3>INGRESO DE DATOS</h3>
+        <label for="nombre">Ingresar Nombre:</label>
+        <input type="text" id="nombre" /> <br />
+        <br />
+        <label for="apellido">Ingresar Apellido:</label>
+        <input type="text" id="apellido" /> <br />
+        <br />
+        <label for="edad">Ingresar Edad:</label>
+        <input type="number" id="edad" /> <br />
+        <br />
+        <label for="cedula">Ingresar su Cedula:</label>
+        <input type="text" id="cedula" /> <br />
+        <br />
+        <label for="ocupacion">Seleccione su ocupacion:</label>
+        <select id="ocupacion">
+          <option disabled selected></option>
+          <option id="dependiente">Dependiente</option>
+          <option id="independiente">Independiente</option>
+          <option id="estudiante">Estudiante</option>
+          <option id="noTrabaja">No trabaja</option></select
+        ><br /><br />
 
-      <label for="departamento">Seleccione departamento</label>
-      <select id="departamento">
-        <option selected disabled></option>
-        <option id="1">Montevideo</option>
-        <option id="2">Canelones</option>
-        <option id="3">Cerro Largo</option>
-        <option id="4">Maldonado</option>
-        <option id="5">Flores</option>
-        <option id="6">Florida</option>
-        <option id="7">Salto</option>
-        <option id="8">Paysandu</option>
-        <option id="9">Rocha</option>
-        <option id="10">Artigas</option>
-        <option id="11">Colonia</option>
-        <option id="12">Durazno</option>
-        <option id="13">Lavalleja</option>
-        <option id="14">Rio Negro</option>
-        <option id="15">Rivera</option>
-        <option id="16">San jose</option>
-        <option id="17">Soriano</option>
-        <option id="18">Tacuarembo</option>
-        <option id="19">Treinta y Tres</option></select
-      ><br /><br />
-      <input type="button" value="Ingresar Datos" id="btnDatosForm" />
-      <input type="button" value="Volver" id="volverInvitado" />
-    </form>
+        <label for="departamento">Seleccione departamento</label>
+        <select id="departamento">
+          <option selected disabled></option>
+          <option id="1">Montevideo</option>
+          <option id="2">Canelones</option>
+          <option id="3">Cerro Largo</option>
+          <option id="4">Maldonado</option>
+          <option id="5">Flores</option>
+          <option id="6">Florida</option>
+          <option id="7">Salto</option>
+          <option id="8">Paysandu</option>
+          <option id="9">Rocha</option>
+          <option id="10">Artigas</option>
+          <option id="11">Colonia</option>
+          <option id="12">Durazno</option>
+          <option id="13">Lavalleja</option>
+          <option id="14">Rio Negro</option>
+          <option id="15">Rivera</option>
+          <option id="16">San jose</option>
+          <option id="17">Soriano</option>
+          <option id="18">Tacuarembo</option>
+          <option id="19">Treinta y Tres</option></select
+        ><br /><br />
+        <input type="button" value="Ingresar Datos" id="btnDatosForm" />
+        <input type="button" value="Volver" id="volverInvitado" />
+      </form>
     </div>
 
     <div id="modificarDeDatos">
@@ -399,54 +465,58 @@
 
     <div id="ingresoDatosCensista">
       <form id="formIngresoDatosCensista">
-      <h3>INGRESAR NUEVO CENSO</h3>
-      <label for="nombre10">Ingresar Nombre:</label>
-      <input type="text" id="nombre10" /> <br />
-      <br />
-      <label for="apellido10">Ingresar Apellido:</label>
-      <input type="text" id="apellido10" /> <br />
-      <br />
-      <label for="edad10">Ingresar Edad:</label>
-      <input type="number" id="edad10" /> <br />
-      <br />
-      <label for="cedula10">Ingresar su Cedula:</label>
-      <input type="text" id="cedula10" /> <br />
-      <br />
-      <label for="ocupacion10">Seleccione su ocupacion:</label>
-      <select id="ocupacion10">
-        <option disabled selected></option>
-        <option id="dependiente10">Dependiente</option>
-        <option id="independiente10">Independiente</option>
-        <option id="estudiante10">Estudiante</option>
-        <option id="noTrabaja10">No trabaja</option></select
-      ><br /><br />
+        <h3>INGRESAR NUEVO CENSO</h3>
+        <label for="nombre10">Ingresar Nombre:</label>
+        <input type="text" id="nombre10" /> <br />
+        <br />
+        <label for="apellido10">Ingresar Apellido:</label>
+        <input type="text" id="apellido10" /> <br />
+        <br />
+        <label for="edad10">Ingresar Edad:</label>
+        <input type="number" id="edad10" /> <br />
+        <br />
+        <label for="cedula10">Ingresar su Cedula:</label>
+        <input type="text" id="cedula10" /> <br />
+        <br />
+        <label for="ocupacion10">Seleccione su ocupacion:</label>
+        <select id="ocupacion10">
+          <option disabled selected></option>
+          <option id="dependiente10">Dependiente</option>
+          <option id="independiente10">Independiente</option>
+          <option id="estudiante10">Estudiante</option>
+          <option id="noTrabaja10">No trabaja</option></select
+        ><br /><br />
 
-      <label for="departamento10">Seleccione departamento</label>
-      <select id="departamento10">
-        <option selected disabled></option>
-        <option id="0100">Montevideo</option>
-        <option id="020">Canelones</option>
-        <option id="030">Cerro Largo</option>
-        <option id="040">Maldonado</option>
-        <option id="050">Flores</option>
-        <option id="060">Florida</option>
-        <option id="070">Salto</option>
-        <option id="080">Paysandu</option>
-        <option id="090">Rocha</option>
-        <option id="0100">Artigas</option>
-        <option id="0110">Colonia</option>
-        <option id="0120">Durazno</option>
-        <option id="0130">Lavalleja</option>
-        <option id="0140">Rio Negro</option>
-        <option id="0150">Rivera</option>
-        <option id="0160">San jose</option>
-        <option id="0170">Soriano</option>
-        <option id="0180">Tacuarembo</option>
-        <option id="0190">Treinta y Tres</option></select
-      ><br /><br />
-      <input type="button" value="Ingresar nuevos datos" id="btnNuevoCenso" />
-      <input type="button" value="Regresar a Pantalla Principal" id="btnRegresar" />
-    </form>
+        <label for="departamento10">Seleccione departamento</label>
+        <select id="departamento10">
+          <option selected disabled></option>
+          <option id="0100">Montevideo</option>
+          <option id="020">Canelones</option>
+          <option id="030">Cerro Largo</option>
+          <option id="040">Maldonado</option>
+          <option id="050">Flores</option>
+          <option id="060">Florida</option>
+          <option id="070">Salto</option>
+          <option id="080">Paysandu</option>
+          <option id="090">Rocha</option>
+          <option id="0100">Artigas</option>
+          <option id="0110">Colonia</option>
+          <option id="0120">Durazno</option>
+          <option id="0130">Lavalleja</option>
+          <option id="0140">Rio Negro</option>
+          <option id="0150">Rivera</option>
+          <option id="0160">San jose</option>
+          <option id="0170">Soriano</option>
+          <option id="0180">Tacuarembo</option>
+          <option id="0190">Treinta y Tres</option></select
+        ><br /><br />
+        <input type="button" value="Ingresar nuevos datos" id="btnNuevoCenso" />
+        <input
+          type="button"
+          value="Regresar a Pantalla Principal"
+          id="btnRegresar"
+        />
+      </form>
     </div>
 
     <div id="modificarDatosCensista">
@@ -496,9 +566,14 @@
         <option id="01901">Treinta y Tres</option></select
       ><br /><br />
       <label for="validado">Censo Validado?</label>
-      <input type="text" id="validado">
-      <input type="button" value="Modificar Datos" id="btnModificarFormCensista" /> <br>
+      <input type="text" id="validado" />
+      <input
+        type="button"
+        value="Modificar Datos"
+        id="btnModificarFormCensista"
+      />
+      <br />
       <input type="button" value="Regresar" id="btnRegreso" />
-
+    </div>
   </body>
 </html>

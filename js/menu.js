@@ -8,6 +8,8 @@ function ocultarDivs() {
   document.querySelector("#mostrarTabla").style.display = "none";
   document.querySelector("#ingresoDatosCensista").style.display = "none";
   document.querySelector("#modificarDatosCensista").style.display = "none";
+  document.querySelector("#idCensos").style.display = "none";
+  document.querySelector("#validarDatos").style.display = "none";
 }
 
 function mostrarDivPrincipal(id) {
