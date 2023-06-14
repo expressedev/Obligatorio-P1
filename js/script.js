@@ -181,9 +181,8 @@ function registro() {
   nombreRegistro = document.querySelector("#nombreRegistro").value.trim();
   nombreUsuario = document.querySelector("#nombreUsuario").value.trim();
   contraseñaRegistro = document.querySelector("#contraRegistro").value.trim();
-  document.querySelector("#nombreRegistro").value = "";
-  document.querySelector("#nombreUsuario").value = "";
-  document.querySelector("#contraRegistro").value = "";
+  let idCensista = sistema.usuarios.length + 1;
+
 
   if (
     nombreRegistro.length === 0 ||
@@ -310,12 +309,8 @@ function datosCenso() {
   let cedulaValidada = sistema.cedulaValida(cedulaCenso)
   let ocupacionCenso = document.querySelector("#ocupacion").value.trim();
   let departamentoCenso = document.querySelector("#departamento").value.trim();
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#apellido").value = "";
-  document.querySelector("#edad").value = "";
-  document.querySelector("#cedula").value = "";
-  document.querySelector("#ocupacion").value = "";
-  document.querySelector("#departamento").value = "";
+  let totalCensistas = sistema.usuarios.length + 1 
+  let idCenso = Math.floor(Math.random() * totalCensistas)
   console.log(cedulaValidada);
   let nuevoCenso = new Censo(
     nombreCenso,
@@ -324,7 +319,8 @@ function datosCenso() {
     cedulaValidada,
     departamentoCenso,
     ocupacionCenso,
-    false
+    false,
+    idCenso
   );
   if (
     nombreCenso.length === 0 ||
@@ -344,6 +340,7 @@ function datosCenso() {
   } else {
     sistema.agregarCenso(nuevoCenso);
     alert("Datos ingresados correctamente");
+    document.querySelector("#formIngresoDeDatos").reset() //Esta funcion borra los datos del form
     mostrarDivPrincipal("buscardorCedulaInvitado");
   }
 }
@@ -399,12 +396,8 @@ function ingresarCensoCensista() {
   let departamentoCenso = document
     .querySelector("#departamento10")
     .value.trim();
-  document.querySelector("#nombre10").value = "";
-  document.querySelector("#apellido10").value = "";
-  document.querySelector("#edad10").value = "";
-  document.querySelector("#cedula10").value = "";
-  document.querySelector("#ocupacion10").value = "";
-  document.querySelector("#departamento10").value = "";
+  let totalCensistas = sistema.usuarios.length + 1
+  let idCenso = Math.floor(Math.random() * totalCensistas)
 
   let nuevoCenso = new Censo(
     nombreCenso,
@@ -413,7 +406,8 @@ function ingresarCensoCensista() {
     cedulaCenso,
     ocupacionCenso,
     departamentoCenso,
-    false
+    false,
+    idCenso
   );
   if (
     nombreCenso.length === 0 ||
@@ -433,5 +427,6 @@ function ingresarCensoCensista() {
   } else {
     sistema.agregarCenso(nuevoCenso);
     alert("Datos ingresados correctamente");
+    document.querySelector("#formIngresoDatosCensista").reset();
   }
 }

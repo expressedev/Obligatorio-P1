@@ -7,9 +7,9 @@ class Sistema {
     this.usuarioLogueado = null;
   }
   agregarUsuarioPrueba() {
-    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123")); //En este caso el this se utiliza para acceder a una propiedad
-    this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123"));
-    this.usuarios.push(new Usuario("Guille", "Guille", "Hola123"));
+    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123", 1)); //En este caso el this se utiliza para acceder a una propiedad
+    this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123", 2));
+    this.usuarios.push(new Usuario("Guille", "Guille", "Hola123", 3));
   }
 
   agregarCensoPrueba() {
@@ -22,7 +22,7 @@ class Sistema {
         "Montevideo",
         "Independiente",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Maxi",
@@ -32,7 +32,7 @@ class Sistema {
         "Canelones",
         "Independiente",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Juan",
@@ -42,7 +42,7 @@ class Sistema {
         "Canelones",
         "Independiente",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Joaquin",
@@ -52,7 +52,7 @@ class Sistema {
         "Canelones",
         "Dependiente",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Joaquina",
@@ -62,7 +62,7 @@ class Sistema {
         "Soriano",
         "Dependiente",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Hernan",
@@ -72,7 +72,7 @@ class Sistema {
         "Montevideo",
         "No trabaja",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Marcos",
@@ -82,7 +82,7 @@ class Sistema {
         "Canelones",
         "No trabaja",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Luis",
@@ -92,7 +92,7 @@ class Sistema {
         "Canelones",
         "Estudiante",
         false,
-        null
+        Math.floor(Math.random() * this.usuarios.length + 1)
       )
     );
   }
@@ -286,10 +286,11 @@ class Sistema {
 }
 
 class Usuario {
-  constructor(nombre, usuario, contraseña) {
+  constructor(nombre, usuario, contraseña, id) {
     this.nombre = nombre;
     this.usuario = usuario;
     this.contraseña = contraseña;
+    this.id = id
   }
 }
 
@@ -302,7 +303,7 @@ class Censo {
     departamento,
     ocupacion,
     validado,
-    censita
+    id
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -311,7 +312,7 @@ class Censo {
     this.departamento = departamento;
     this.ocupacion = ocupacion;
     this.validado = validado;
-    this.censita = censita;
+    this.id = id;
   }
 }
 
