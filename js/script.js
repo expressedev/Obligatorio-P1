@@ -204,7 +204,8 @@ function registro() {
     let nuevoUsuario = new Usuario(
       nombreRegistro,
       nombreUsuario,
-      contraseñaRegistro
+      contraseñaRegistro,
+      idCensista
     );
     sistema.agregarUsuario(nuevoUsuario);
     alert("registrado");
@@ -309,8 +310,8 @@ function datosCenso() {
   let cedulaValidada = sistema.cedulaValida(cedulaCenso)
   let ocupacionCenso = document.querySelector("#ocupacion").value.trim();
   let departamentoCenso = document.querySelector("#departamento").value.trim();
-  let totalCensistas = sistema.usuarios.length + 1 
-  let idCenso = Math.floor(Math.random() * totalCensistas)
+  let totalCensistas = sistema.usuarios.length
+  let idCenso = Math.floor(Math.random() * totalCensistas + 1)
   console.log(cedulaValidada);
   let nuevoCenso = new Censo(
     nombreCenso,
@@ -396,8 +397,8 @@ function ingresarCensoCensista() {
   let departamentoCenso = document
     .querySelector("#departamento10")
     .value.trim();
-  let totalCensistas = sistema.usuarios.length + 1
-  let idCenso = Math.floor(Math.random() * totalCensistas)
+  let totalCensistas = sistema.usuarios.length
+  let idCenso = Math.floor(Math.random() * totalCensistas + 1)
 
   let nuevoCenso = new Censo(
     nombreCenso,
