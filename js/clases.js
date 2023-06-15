@@ -18,7 +18,7 @@ class Sistema {
         "Pedro",
         "Aznarez",
         "20",
-        49758675,
+        49758676,
         "Montevideo",
         "Independiente",
         false,
@@ -28,7 +28,7 @@ class Sistema {
         "Maxi",
         "Navarro",
         "20",
-        49758672,
+        44103662,
         "Canelones",
         "Independiente",
         false,
@@ -149,6 +149,16 @@ class Sistema {
     }
     return cedulaBuscada;
   }
+  cedulaExiste(cedula) {
+    let cedulaExiste = false;
+    for (let i = 0; i < this.censos.length; i++) {
+      let cedulaAcutal = this.censos[i];
+      if (cedulaAcutal.cedula === cedula) {
+        cedulaExiste = true;
+      }
+    }
+    return cedulaExiste;
+  }
 
   buscarId(id) {
     let censos = [];
@@ -161,7 +171,8 @@ class Sistema {
     return censos;
   }
 
-  listaCensista(id) {  //Pasamos ID de censista logueado
+  listaCensista(id) {
+    //Pasamos ID de censista logueado
     let censistas = [];
     for (let i = 0; i < this.usuarios.length; i++) {
       let censistaActual = this.usuarios[i];
@@ -296,10 +307,9 @@ class Sistema {
     this.censos.push(unCenso);
   }
 
-  modificarId(cedula, id){
+  modificarId(cedula, id) {
     let censo = this.buscarCedula(cedula);
     censo.id = id;
-    
   }
 
   modificarCenso(

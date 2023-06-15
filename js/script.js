@@ -33,9 +33,9 @@ function inicio() {
   document
     .querySelector("#btnRegresar")
     .addEventListener("click", regresoApantallaPrincipal);
-  document
-    .querySelector("#btnBuscarPorCed")
-    .addEventListener("click", buscarPorCedulaCensista);
+  // document
+  //   .querySelector("#btnBuscarPorCed")
+  //   .addEventListener("click", buscarPorCedulaCensista);
   document
     .querySelector("#btnRegreso")
     .addEventListener("click", regresoCensista);
@@ -60,10 +60,10 @@ function inicio() {
   document
     .querySelector("#btnValidarForm")
     .addEventListener("click", validarCenso);
-    document
+  document
     .querySelector("#btnReasignar")
     .addEventListener("click", reasignarCenso);
-    document
+  document
     .querySelector("#btnReasignarCompletado")
     .addEventListener("click", reasignarCensista);
 }
@@ -274,31 +274,31 @@ function buscadorCedula() {
       sistema.buscarCedula(cedula).departamento;
   }
 }
-function buscarPorCedulaCensista() {
-  let cedula = Number(document.querySelector("#buscarPorCedula").value);
-  let buscar = sistema.buscarCedula(cedula);
-  if (buscar === null) {
-    document.querySelector("#respuestaAbusqueda").innerHTML =
-      "La cedula no esta censada";
-  } else {
-    mostrarDivPrincipal("modificarDatosCensista");
-    document.querySelector("#nombre101").value =
-      sistema.buscarCedula(cedula).nombre;
-    document.querySelector("#apellido101").value =
-      sistema.buscarCedula(cedula).apellido;
-    document.querySelector("#edad101").value =
-      sistema.buscarCedula(cedula).edad;
-    document.querySelector("#cedula101").value =
-      sistema.buscarCedula(cedula).cedula;
-    document.querySelector("#cedula101").disabled = true;
-    document.querySelector("#ocupacion101").value =
-      sistema.buscarCedula(cedula).ocupacion;
-    document.querySelector("#departamento101").value =
-      sistema.buscarCedula(cedula).departamento;
-    document.querySelector("#validado").value =
-      sistema.buscarCedula(cedula).validado;
-  }
-}
+// function buscarPorCedulaCensista() {
+//   let cedula = Number(document.querySelector("#buscarPorCedula").value);
+//   let buscar = sistema.buscarCedula(cedula);
+//   if (buscar === null) {
+//     document.querySelector("#respuestaAbusqueda").innerHTML =
+//       "La cedula no esta censada";
+//   } else {
+//     mostrarDivPrincipal("modificarDatosCensista");
+//     document.querySelector("#nombre101").value =
+//       sistema.buscarCedula(cedula).nombre;
+//     document.querySelector("#apellido101").value =
+//       sistema.buscarCedula(cedula).apellido;
+//     document.querySelector("#edad101").value =
+//       sistema.buscarCedula(cedula).edad;
+//     document.querySelector("#cedula101").value =
+//       sistema.buscarCedula(cedula).cedula;
+//     document.querySelector("#cedula101").disabled = true;
+//     document.querySelector("#ocupacion101").value =
+//       sistema.buscarCedula(cedula).ocupacion;
+//     document.querySelector("#departamento101").value =
+//       sistema.buscarCedula(cedula).departamento;
+//     document.querySelector("#validado").value =
+//       sistema.buscarCedula(cedula).validado;
+//   }
+// }
 function regresoCensista() {
   mostrarDivPrincipal("perfilCensista");
   ocultarDiv("ingresoDatosCensista");
@@ -316,17 +316,30 @@ function infoEstadisticaCensista() {
     sistema.contarDepartamento(canelones);
 }
 
+//ACA VA VALIDADOR DE CEDULA
 function datosCenso() {
   let nombreCenso = document.querySelector("#nombre").value.trim();
   let apellidoCenso = document.querySelector("#apellido").value.trim();
   let edadCenso = document.querySelector("#edad").value.trim();
   let cedulaCenso = document.querySelector("#cedula").value.trim();
-  let cedulaValidada = sistema.cedulaValida(cedulaCenso);
+  let cedulaValidada = Number(sistema.cedulaValida(cedulaCenso));
+  let cedulaValidarDigito = sistema.cedulaValida(cedulaCenso);
   let ocupacionCenso = document.querySelector("#ocupacion").value.trim();
   let departamentoCenso = document.querySelector("#departamento").value.trim();
   let totalCensistas = sistema.usuarios.length;
   let idCenso = Math.floor(Math.random() * totalCensistas + 1);
-  console.log(cedulaValidada);
+
+  let multiplicador = "2987634";
+  let digitoVerificar = cedulaValidarDigito.charAt(
+    cedulaValidarDigito.length - 1
+  );
+  let acumulador = 0;
+  for (let i = 0; i < cedulaValidarDigito.length - 1; i++) {
+    acumulador +=
+      Number(cedulaValidarDigito.charAt(i)) * Number(multiplicador.charAt(i));
+  }
+  let digitoVerificador = 10 - (acumulador % 10);
+
   let nuevoCenso = new Censo(
     nombreCenso,
     apellidoCenso,
@@ -346,8 +359,10 @@ function datosCenso() {
     alert("Todos los campos son obligatorios");
   } else if (edadCenso < 0 || edadCenso > 120) {
     alert("La edad tiene que estar entre 0 y 120");
-  } else if (cedulaCenso < 1000000 || edadCenso.length > 99999999) {
-    alert("La cedula tiene que ser valida");
+  } else if (digitoVerificar != digitoVerificador) {
+    alert("Cedula Invalida");
+  } else if (sistema.cedulaExiste(cedulaValidada) === true) {
+    alert("Cedula ya fue censada");
   } else if (ocupacionCenso === "") {
     alert("Seleccione Ocupacion");
   } else if (departamentoCenso === "") {
@@ -402,11 +417,15 @@ function regresoApantallaPrincipal() {
   mostrarDivPrincipal("perfilCensista");
   ocultarDiv("ingresoDatosCensista");
 }
+
+//ACA VA VALIDADOR DE CEDULA
 function ingresarCensoCensista() {
   let nombreCenso = document.querySelector("#nombre10").value.trim();
   let apellidoCenso = document.querySelector("#apellido10").value.trim();
   let edadCenso = document.querySelector("#edad10").value.trim();
   let cedulaCenso = document.querySelector("#cedula10").value.trim();
+  let cedulaValidada = Number(sistema.cedulaValida(cedulaCenso));
+  let cedulaValidarDigito = sistema.cedulaValida(cedulaCenso);
   let ocupacionCenso = document.querySelector("#ocupacion10").value.trim();
   let departamentoCenso = document
     .querySelector("#departamento10")
@@ -414,11 +433,22 @@ function ingresarCensoCensista() {
   let totalCensistas = sistema.usuarios.length;
   let idCenso = Math.floor(Math.random() * totalCensistas + 1);
 
+  let multiplicador = "2987634";
+  let digitoVerificar = cedulaValidarDigito.charAt(
+    cedulaValidarDigito.length - 1
+  );
+  let acumulador = 0;
+  for (let i = 0; i < cedulaValidarDigito.length - 1; i++) {
+    acumulador +=
+      Number(cedulaValidarDigito.charAt(i)) * Number(multiplicador.charAt(i));
+  }
+  let digitoVerificador = 10 - (acumulador % 10);
+
   let nuevoCenso = new Censo(
     nombreCenso,
     apellidoCenso,
     edadCenso,
-    cedulaCenso,
+    cedulaValidada,
     ocupacionCenso,
     departamentoCenso,
     false,
@@ -433,8 +463,10 @@ function ingresarCensoCensista() {
     alert("Todos los campos son obligatorios");
   } else if (edadCenso < 0 || edadCenso > 120) {
     alert("La edad tiene que estar entre 0 y 120");
-  } else if (cedulaCenso < 1000000 || edadCenso.length > 99999999) {
-    alert("La cedula tiene que ser valida");
+  } else if (digitoVerificar != digitoVerificador) {
+    alert("Cedula Invalida");
+  } else if (sistema.cedulaExiste(cedulaValidada) === true) {
+    alert("Cedula ya fue censada");
   } else if (ocupacionCenso === "") {
     alert("Seleccione Ocupacion");
   } else if (departamentoCenso === "") {
@@ -528,14 +560,14 @@ function validarCenso() {
   }
 }
 
-function reasignarCenso(){  
+function reasignarCenso() {
   let idCensista = sistema.usuarioLogueado.id;
-  let arrayCensistas = sistema.listaCensista(idCensista)
+  let arrayCensistas = sistema.listaCensista(idCensista);
 
   let select = "";
   for (let i = 0; i < arrayCensistas.length; i++) {
     let nombre = arrayCensistas[i].nombre;
-    let id = arrayCensistas[i].id;   
+    let id = arrayCensistas[i].id;
     select += `<option value="${id}">${nombre}-${id}</option>`;
   }
   mostrarDiv("listaCensistas");
@@ -543,7 +575,7 @@ function reasignarCenso(){
   document.querySelector("#selectCensistas").innerHTML = select;
 }
 
-function reasignarCensista(){
+function reasignarCensista() {
   let censoNuevo = Number(document.querySelector("#selectCensos").value);
   let censistaNuevo = Number(document.querySelector("#selectCensistas").value);
 
@@ -551,6 +583,5 @@ function reasignarCensista(){
   alert("Reasignaste el censo");
 
   ocultarDiv("listaCensistas");
-  muestraPreCensos()
-
+  muestraPreCensos();
 }
