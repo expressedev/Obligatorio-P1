@@ -60,6 +60,12 @@ function inicio() {
   document
     .querySelector("#btnValidarForm")
     .addEventListener("click", validarCenso);
+    document
+    .querySelector("#btnReasignar")
+    .addEventListener("click", reasignarCenso);
+    document
+    .querySelector("#btnReasignarCompletado")
+    .addEventListener("click", reasignarCensista);
 }
 
 let sistema = new Sistema();
@@ -520,4 +526,31 @@ function validarCenso() {
     ocultarDiv("validarDatos");
     muestraPreCensos();
   }
+}
+
+function reasignarCenso(){  
+  let idCensista = sistema.usuarioLogueado.id;
+  let arrayCensistas = sistema.listaCensista(idCensista)
+
+  let select = "";
+  for (let i = 0; i < arrayCensistas.length; i++) {
+    let nombre = arrayCensistas[i].nombre;
+    let id = arrayCensistas[i].id;   
+    select += `<option value="${id}">${nombre}-${id}</option>`;
+  }
+  mostrarDiv("listaCensistas");
+
+  document.querySelector("#selectCensistas").innerHTML = select;
+}
+
+function reasignarCensista(){
+  let censoNuevo = Number(document.querySelector("#selectCensos").value);
+  let censistaNuevo = Number(document.querySelector("#selectCensistas").value);
+
+  sistema.modificarId(censoNuevo, censistaNuevo);
+  alert("Reasignaste el censo");
+
+  ocultarDiv("listaCensistas");
+  muestraPreCensos()
+
 }

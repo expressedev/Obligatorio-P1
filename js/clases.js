@@ -161,6 +161,17 @@ class Sistema {
     return censos;
   }
 
+  listaCensista(id) {  //Pasamos ID de censista logueado
+    let censistas = [];
+    for (let i = 0; i < this.usuarios.length; i++) {
+      let censistaActual = this.usuarios[i];
+      if (censistaActual.id != id) {
+        censistas.push(censistaActual);
+      }
+    }
+    return censistas;
+  }
+
   cedulaValida(cedula) {
     for (let i = 0; i < cedula.length; i++) {
       cedula = cedula.replace(".", "");
@@ -283,6 +294,12 @@ class Sistema {
   }
   agregarCenso(unCenso) {
     this.censos.push(unCenso);
+  }
+
+  modificarId(cedula, id){
+    let censo = this.buscarCedula(cedula);
+    censo.id = id;
+    
   }
 
   modificarCenso(

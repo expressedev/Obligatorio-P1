@@ -10,6 +10,7 @@ function ocultarDivs() {
   document.querySelector("#modificarDatosCensista").style.display = "none";
   document.querySelector("#idCensos").style.display = "none";
   document.querySelector("#validarDatos").style.display = "none";
+  document.querySelector("#listaCensistas").style.display = "none";
 }
 
 function mostrarDivPrincipal(id) {
