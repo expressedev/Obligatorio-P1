@@ -25,6 +25,9 @@ function inicio() {
     .querySelector("#btnModificarForm")
     .addEventListener("click", modificarDatos);
   document
+    .querySelector("#btnEliminarForm")
+    .addEventListener("click", eliminarDatos);
+  document
     .querySelector("#btnCensarPersona")
     .addEventListener("click", datosNuevoCensoCensista);
   document
@@ -33,9 +36,9 @@ function inicio() {
   document
     .querySelector("#btnRegresar")
     .addEventListener("click", regresoApantallaPrincipal);
-   document
-     .querySelector("#btnBuscarPorCed")
-     .addEventListener("click", buscarPorCedulaCensista);
+  document
+    .querySelector("#btnBuscarPorCed")
+    .addEventListener("click", buscarPorCedulaCensista);
   document
     .querySelector("#btnRegreso")
     .addEventListener("click", regresoCensista);
@@ -69,7 +72,6 @@ function inicio() {
   document
     .querySelector("#btnModificarFormCensista")
     .addEventListener("click", modificarDatosBuscados);
-
 }
 
 let sistema = new Sistema();
@@ -262,11 +264,11 @@ function buscadorCedula() {
   if (buscar === null) {
     document.querySelector("#cedulabuscada").innerHTML =
       "Para esta cedula no se han ingresado datos previos, debera ir al boton de ingresar Datos.";
-  } else if(buscar.validado === true){
+  } else if (buscar.validado === true) {
     document.querySelector("#cedulabuscada").innerHTML =
       "La cedula ya fue validada por un censista, no se podran modificar los datos.";
   } else {
-    document.querySelector("#cedulabuscada").innerHTML = ''
+    document.querySelector("#cedulabuscada").innerHTML = "";
     mostrarDiv("modificarDeDatos");
     document.querySelector("#nombre1").value =
       sistema.buscarCedula(cedula).nombre;
@@ -280,18 +282,17 @@ function buscadorCedula() {
       sistema.buscarCedula(cedula).ocupacion;
     document.querySelector("#departamento1").value =
       sistema.buscarCedula(cedula).departamento;
-      
   }
 }
 
 function buscarPorCedulaCensista() {
   let cedula = Number(document.querySelector("#buscarPorCedula").value);
   let buscar = sistema.buscarCedula(cedula);
-  let validado = ''
-  if(sistema.buscarCedula(cedula).validado === false){
-    validado = 'El censo no esta validado'
+  let validado = "";
+  if (sistema.buscarCedula(cedula).validado === false) {
+    validado = "El censo no esta validado";
   } else {
-    validado = 'El censo ya fue validado'
+    validado = "El censo ya fue validado";
   }
   if (buscar === null) {
     document.querySelector("#respuestaAbusqueda").innerHTML =
@@ -311,9 +312,8 @@ function buscarPorCedulaCensista() {
       sistema.buscarCedula(cedula).ocupacion;
     document.querySelector("#departamento101").value =
       sistema.buscarCedula(cedula).departamento;
-    document.querySelector("#pValidado").innerHTML=
-      validado
-      console.log(validado)
+    document.querySelector("#pValidado").innerHTML = validado;
+    console.log(validado);
   }
 }
 
@@ -430,14 +430,23 @@ function modificarDatos() {
   }
 }
 
-function modificarDatosBuscados(){
+function eliminarDatos() {
+  let cedulaCenso = Number(document.querySelector("#cedula1").value);
+  sistema.eliminarPersona(cedulaCenso);
+  alert("Sus datos para el censo fueron eliminados");
+  ocultarDiv("modificarDeDatos");
+}
+
+function modificarDatosBuscados() {
   let nombreCenso = document.querySelector("#nombre101").value.trim();
   let apellidoCenso = document.querySelector("#apellido101").value.trim();
   let edadCenso = document.querySelector("#edad101").value.trim();
   let cedulaCenso = Number(document.querySelector("#cedula101").value);
 
   let ocupacionCenso = document.querySelector("#ocupacion101").value.trim();
-  let departamentoCenso = document.querySelector("#departamento101").value.trim();
+  let departamentoCenso = document
+    .querySelector("#departamento101")
+    .value.trim();
 
   let censo = sistema.buscarCedula(cedulaCenso);
 
@@ -465,10 +474,9 @@ function modificarDatosBuscados(){
     );
     alert("modificaste y validaste el censo");
     ocultarDiv("modificarDatosCensista");
-    mostrarDiv("perfilCensista")
+    mostrarDiv("perfilCensista");
   }
 }
-
 
 function regresoApantallaPrincipal() {
   mostrarDivPrincipal("perfilCensista");

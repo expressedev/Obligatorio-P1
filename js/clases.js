@@ -149,6 +149,11 @@ class Sistema {
     }
     return cedulaBuscada;
   }
+
+  eliminarPersona(cedula) {
+    this.censos = this.censos.filter((censo) => censo.cedula !== cedula);
+  }
+
   cedulaExiste(cedula) {
     let cedulaExiste = false;
     for (let i = 0; i < this.censos.length; i++) {
