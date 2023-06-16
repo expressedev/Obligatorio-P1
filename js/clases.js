@@ -21,7 +21,7 @@ class Sistema {
         49758676,
         "Montevideo",
         "Independiente",
-        false,
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
@@ -31,7 +31,7 @@ class Sistema {
         44103662,
         "Canelones",
         "Independiente",
-        false,
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
@@ -68,10 +68,10 @@ class Sistema {
         "Hernan",
         "Arias",
         "21",
-        49758661,
+        49758261,
         "Montevideo",
         "No trabaja",
-        false,
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
@@ -88,7 +88,7 @@ class Sistema {
         "Luis",
         "Suarez",
         "31",
-        49758661,
+        49751661,
         "Canelones",
         "Estudiante",
         false,
@@ -197,12 +197,10 @@ class Sistema {
   }
 
   contarDepartamento(departamento) {
-    let departamentoBuscada;
     let contadorDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (departamentoAcutal.departamento === departamento) {
-        departamentoBuscada = departamentoAcutal;
         contadorDepartamento = contadorDepartamento + 1;
       }
     }
@@ -210,99 +208,119 @@ class Sistema {
   }
 
   contarMayores(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorMayoresDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.edad >= 18
+        departamentoAcutal.edad >= 18 &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorMayoresDepartamento = contadorMayoresDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorMayoresDepartamento;
   }
 
   contarMenores(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorMenoresDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.edad < 18
+        departamentoAcutal.edad < 18 &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorMenoresDepartamento = contadorMenoresDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorMenoresDepartamento;
   }
 
   contarDependiente(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorDependienteDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.ocupacion == "Dependiente"
+        departamentoAcutal.ocupacion == "Dependiente" &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorDependienteDepartamento = contadorDependienteDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorDependienteDepartamento;
   }
 
   contarIndependiente(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorIndependienteDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.ocupacion == "Independiente"
+        departamentoAcutal.ocupacion == "Independiente" &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorIndependienteDepartamento =
+          contadorIndependienteDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorIndependienteDepartamento;
   }
 
   contarEstudiante(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorEstudianteDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.ocupacion == "Estudiante"
+        departamentoAcutal.ocupacion == "Estudiante" &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorEstudianteDepartamento = contadorEstudianteDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorEstudianteDepartamento;
   }
 
   contarNoTrabajan(departamento) {
-    let departamentoBuscada;
-    let contadorDepartamento = 0;
+    let contadorNoTrabajaDepartamento = 0;
     for (let i = 0; i < this.censos.length; i++) {
       let departamentoAcutal = this.censos[i];
       if (
         departamentoAcutal.departamento === departamento &&
-        departamentoAcutal.ocupacion == "No trabaja"
+        departamentoAcutal.ocupacion == "No trabaja" &&
+        departamentoAcutal.validado == true
       ) {
-        departamentoBuscada = departamentoAcutal;
-        contadorDepartamento = contadorDepartamento + 1;
+        contadorNoTrabajaDepartamento = contadorNoTrabajaDepartamento + 1;
       }
     }
-    return contadorDepartamento;
+    return contadorNoTrabajaDepartamento;
+  }
+
+  contarCensados(departamento) {
+    let contadorCensadosDepartamento = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let departamentoAcutal = this.censos[i];
+      if (
+        departamentoAcutal.departamento === departamento &&
+        departamentoAcutal.validado == true
+      ) {
+        contadorCensadosDepartamento = contadorCensadosDepartamento + 1;
+      }
+    }
+    return contadorCensadosDepartamento;
+  }
+
+  contarCensadosTotales() {
+    let contadorCensadosTotales = 0;
+    for (let i = 0; i < this.censos.length; i++) {
+      let censos = this.censos[i];
+      if (censos.validado == true) {
+        contadorCensadosTotales = contadorCensadosTotales + 1;
+      }
+    }
+    return contadorCensadosTotales;
   }
 
   obtenerCensos() {

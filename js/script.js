@@ -37,6 +37,9 @@ function inicio() {
     .querySelector("#btnRegresar")
     .addEventListener("click", regresoApantallaPrincipal);
   document
+    .querySelector("#btnRegresarDesdeInfo")
+    .addEventListener("click", regresoApantallaCensista);
+  document
     .querySelector("#btnBuscarPorCed")
     .addEventListener("click", buscarPorCedulaCensista);
   document
@@ -80,15 +83,18 @@ function infoPorDepartamento() {
   let departamento = document.querySelector("#infoDelDepartamento").value;
   let cantDepartamentoMayores = (
     (sistema.contarMayores(departamento) /
-      sistema.contarDepartamento(departamento)) *
+      sistema.contarCensados(departamento)) *
     100
   ).toFixed(2);
   let cantDepartamentoMenores = (
     (sistema.contarMenores(departamento) /
-      sistema.contarDepartamento(departamento)) *
+      sistema.contarCensados(departamento)) *
     100
   ).toFixed(2);
-  let tabla = `<table border="1px">
+  if (sistema.contarCensados(departamento) === 0) {
+    alert("No hay censados para el departamento seleccionado");
+  } else {
+    let tabla = `<table border="1px">
   <thead id="tablaPorDepartamento">
     <tr>
       <th>Departamento</th>
@@ -102,8 +108,9 @@ function infoPorDepartamento() {
     </tr>
   </thead>
 </table>`;
-  document.querySelector("#tablaMenoresMayores").innerHTML = tabla;
-  mostrarDiv("tablaMenoresMayores");
+    document.querySelector("#tablaMenoresMayores").innerHTML = tabla;
+    mostrarDiv("tablaMenoresMayores");
+  }
 }
 
 function ocultarInfoPorDepartamento() {
@@ -111,61 +118,46 @@ function ocultarInfoPorDepartamento() {
 }
 
 function mostrarInforme() {
-  let porcentaje = sistema.censos.length;
   let montevideo = "Montevideo";
-  let montevideoDependientes = sistema.contarDependiente(montevideo);
-  let montevideoIndpendientes = sistema.contarIndependiente(montevideo);
+  let montevideoTrabajan =
+    sistema.contarIndependiente(montevideo) +
+    sistema.contarDependiente(montevideo);
   let montevideoEstudiante = sistema.contarEstudiante(montevideo);
   let montevideoNoTrabajan = sistema.contarNoTrabajan(montevideo);
-  let totalMontevideo = sistema.contarDepartamento(montevideo);
+  let totalMontevideo = (
+    (sistema.contarDepartamento(montevideo) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianMontevideo1").innerHTML =
+    montevideoEstudiante;
+  document.querySelector("#cantNoTrabajanMontevideo1").innerHTML =
+    montevideoNoTrabajan;
+  document.querySelector("#cantTrabajanMontevideo1").innerHTML =
+    montevideoTrabajan;
+  document.querySelector("#cantMontevideo1").innerHTML = totalMontevideo;
+
   let canelones = "Canelones";
-  let canelonesDependientes = sistema.contarDependiente(canelones);
-  let canelonesIndpendientes = sistema.contarIndependiente(canelones);
+  let canelonesTrabajan =
+    sistema.contarIndependiente(canelones) +
+    sistema.contarDependiente(canelones);
   let canelonesEstudiante = sistema.contarEstudiante(canelones);
   let canelonesNoTrabajan = sistema.contarNoTrabajan(canelones);
-  let totalCanelones = sistema.contarDepartamento(canelones);
+  let totalCanelones = (
+    (sistema.contarDepartamento(canelones) / sistema.censos.length) *
+    100
+  ).toFixed(2);
 
-  let tabla = `<table border="1px">
-  <thead>
-    <tr>
-      <th>Departamento</th>
-      <th>Personas Dependientes</th>
-      <th>Personas Independientes</th>
-      <th>Personas que Estudian</th>
-      <th>Personas que No Trabajan</th>
-      <th>Total Personas</th>
-      <th>Porcentaje del total del censo</th>
+  document.querySelector("#cantEstudianCanelones1").innerHTML =
+    canelonesEstudiante;
+  document.querySelector("#cantNoTrabajanCanelones1").innerHTML =
+    canelonesNoTrabajan;
+  document.querySelector("#cantTrabajanCanelones1").innerHTML =
+    canelonesTrabajan;
+  document.querySelector("#cantCanelones1").innerHTML = totalCanelones;
 
-    </tr>
-    <tr>
-      <td>${montevideo}</td>
-      <td id="cantMontevideoDependientes">${montevideoDependientes}</td>
-      <td id="cantMontevideoIndependientes">${montevideoIndpendientes}</td>
-      <td id="cantMontevideoIndependientes">${montevideoEstudiante}</td>
-      <td id="cantMontevideoIndependientes">${montevideoNoTrabajan}</td>
-      <td id="cantMontevideoTotal">${totalMontevideo}</td>
-      <td id="cantMontevideoPorcentaje">${(
-        (totalMontevideo / porcentaje) *
-        100
-      ).toFixed(2)}%</td>
-    
-    </tr>
-    <tr>
-      <td>${canelones}</td>
-      <td id="cantCanelonesDependientes">${canelonesDependientes}</td>
-      <td id="cantCanelonesIndependientes">${canelonesIndpendientes}</td>
-      <td id="cantMontevideoIndependientes">${canelonesEstudiante}</td>
-      <td id="cantMontevideoIndependientes">${canelonesNoTrabajan}</td>
-      <td id="cantCanelonesTotal">${totalCanelones}</td>
-      <td id="cantCanelonesPorcentaje">${(
-        (totalCanelones / porcentaje) *
-        100
-      ).toFixed(2)}%</td>
-      
-    </tr>
-  </thead>
-</table>`;
-  document.querySelector("#tablaReporte").innerHTML = tabla;
+  //HAY QUE COPIAR PARA CADA DEPARTAMENTO EJEMPLO: DESDE LA LINE 141 LET CANELONES HASTA LA LINE 159 QUE TERMINA EN =TOTALCANELONES, COPIAR Y PEGAR Y CAMBIAR LOS CANELONES POR MALDONADOS RESPETANDO LAS MAYUSCULAS Y MINUSCULAS POR LOS IDS.
+
   mostrarDiv("tablaReporte");
 }
 
@@ -313,7 +305,6 @@ function buscarPorCedulaCensista() {
     document.querySelector("#departamento101").value =
       sistema.buscarCedula(cedula).departamento;
     document.querySelector("#pValidado").innerHTML = validado;
-    console.log(validado);
   }
 }
 
@@ -324,14 +315,75 @@ function regresoCensista() {
 
 function infoEstadisticaCensista() {
   document.querySelector("#totalPersonasCensadas").innerHTML =
-    "El total de personas censadas es: " + sistema.censos.length;
-  mostrarDiv("mostrarTabla");
+    "El total de personas censadas es: " + sistema.contarCensadosTotales();
+  let porcentaje = (
+    ((sistema.censos.length - sistema.contarCensadosTotales()) /
+      sistema.censos.length) *
+    100
+  ).toFixed(2);
+  document.querySelector("#porcentajePendientesValidados").innerHTML =
+    "El porcentaje de personas pendientes de validar sus datos respecto al total de personas es: " +
+    porcentaje +
+    "%";
+
+  mostrarDivPrincipal("mostrarTabla");
   let montevideo = "Montevideo";
   document.querySelector("#cantMontevideo").innerHTML =
-    sistema.contarDepartamento(montevideo);
+    sistema.contarCensados(montevideo);
   let canelones = "Canelones";
   document.querySelector("#cantCanelones").innerHTML =
-    sistema.contarDepartamento(canelones);
+    sistema.contarCensados(canelones);
+  let maldonado = "Maldonado";
+  document.querySelector("#cantMaldonado").innerHTML =
+    sistema.contarCensados(maldonado);
+  let cerroLargo = "Cerro Largo";
+  document.querySelector("#cantCerroLargo").innerHTML =
+    sistema.contarCensados(cerroLargo);
+  let flores = "Flores";
+  document.querySelector("#cantFlores").innerHTML =
+    sistema.contarCensados(flores);
+  let florida = "Florida";
+  document.querySelector("#cantFlorida").innerHTML =
+    sistema.contarCensados(florida);
+  let salto = "Salto";
+  document.querySelector("#cantSalto").innerHTML =
+    sistema.contarCensados(salto);
+  let paysandu = "Paysandu";
+  document.querySelector("#cantPaysandu").innerHTML =
+    sistema.contarCensados(paysandu);
+  let rocha = "Rocha";
+  document.querySelector("#cantRocha").innerHTML =
+    sistema.contarCensados(rocha);
+  let artigas = "Artigas";
+  document.querySelector("#cantArtigas").innerHTML =
+    sistema.contarCensados(artigas);
+  let colonia = "Colonia";
+  document.querySelector("#cantColonia").innerHTML =
+    sistema.contarCensados(colonia);
+  let durazno = "Durazno";
+  document.querySelector("#cantDurazno").innerHTML =
+    sistema.contarCensados(durazno);
+  let lavalleja = "Lavalleja";
+  document.querySelector("#cantLavalleja").innerHTML =
+    sistema.contarCensados(lavalleja);
+  let RioNegro = "Rio Negro";
+  document.querySelector("#cantRioNegro").innerHTML =
+    sistema.contarCensados(RioNegro);
+  let rivera = "Rivera";
+  document.querySelector("#cantRivera").innerHTML =
+    sistema.contarCensados(rivera);
+  let sanJose = "San Jose";
+  document.querySelector("#cantSanJose").innerHTML =
+    sistema.contarCensados(sanJose);
+  let soriano = "Soriano";
+  document.querySelector("#cantSoriano").innerHTML =
+    sistema.contarCensados(soriano);
+  let tacuarembo = "Tacuarembo";
+  document.querySelector("#cantTacuarembo").innerHTML =
+    sistema.contarCensados(tacuarembo);
+  let treintayTres = "Treinta y Tres";
+  document.querySelector("#cantTreintayTres").innerHTML =
+    sistema.contarCensados(treintayTres);
 }
 
 //ACA VA VALIDADOR DE CEDULA
@@ -483,6 +535,11 @@ function regresoApantallaPrincipal() {
   ocultarDiv("ingresoDatosCensista");
 }
 
+function regresoApantallaCensista() {
+  mostrarDivPrincipal("perfilCensista");
+  ocultarDiv("ingresoDatosCensista");
+}
+
 function ingresarCensoCensista() {
   let nombreCenso = document.querySelector("#nombre10").value.trim();
   let apellidoCenso = document.querySelector("#apellido10").value.trim();
@@ -561,7 +618,6 @@ function muestraPreCensos() {
 
 function modificarPreCenso() {
   let valueSelect = Number(document.querySelector("#selectCensos").value);
-  console.log(valueSelect);
   mostrarDiv("validarDatos");
   let buscar = sistema.buscarCedula(valueSelect);
   if (buscar === null) {

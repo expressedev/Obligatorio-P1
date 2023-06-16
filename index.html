@@ -149,35 +149,7 @@
           value="Visualizar Info Estadistica"
         /><br />
       </div>
-      <p id="totalPersonasCensadas"></p>
-      <div id="mostrarTabla">
-        <table border="1px">
-          <thead id="tablaDepartamentos">
-            <tr>
-              <th>Departamento</th>
-              <th>Cantidad de Personas Censadas</th>
-              <th>% pendiente de validar</th>
-            </tr>
-            <tr>
-              <td id="montevideo">Montevideo</td>
-              <td id="cantMontevideo"></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Maldonado</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td id="canelones">Canelones</td>
-              <td id="cantCanelones"></td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <br />
-      </div>
+
       <br />
       <div>
         <input
@@ -235,7 +207,7 @@
           <option id="A13">Lavalleja</option>
           <option id="A14">Rio Negro</option>
           <option id="A15">Rivera</option>
-          <option id="A16">San jose</option>
+          <option id="A16">San Jose</option>
           <option id="A17">Soriano</option>
           <option id="A18">Tacuarembo</option>
           <option id="A19">Treinta y Tres</option></select
@@ -273,6 +245,97 @@
         </div>
       </div>
     </div>
+    <div id="mostrarTabla">
+      <p id="totalPersonasCensadas"></p>
+      <p id="porcentajePendientesValidados"></p>
+      <table border="1px">
+        <thead id="tablaDepartamentos">
+          <tr>
+            <th>Departamento</th>
+            <th>Cantidad de Personas Censadas</th>
+          </tr>
+          <tr>
+            <td id="montevideo">Montevideo</td>
+            <td id="cantMontevideo"></td>
+          </tr>
+          <tr>
+            <td id="maldonado">Maldonado</td>
+            <td id="cantMaldonado"></td>
+          </tr>
+          <tr>
+            <td id="canelones">Canelones</td>
+            <td id="cantCanelones"></td>
+          </tr>
+          <tr>
+            <td id="cerroLargo">Cerro largo</td>
+            <td id="cantCerroLargo"></td>
+          </tr>
+          <tr>
+            <td id="flores">Flores</td>
+            <td id="cantFlores"></td>
+          </tr>
+          <tr>
+            <td id="florida">Florida</td>
+            <td id="cantFlorida"></td>
+          </tr>
+          <tr>
+            <td id="salto">Salto</td>
+            <td id="cantSalto"></td>
+          </tr>
+          <tr>
+            <td id="paysandu">Paysandu</td>
+            <td id="cantPaysandu"></td>
+          </tr>
+          <tr>
+            <td id="rocha">Rocha</td>
+            <td id="cantRocha"></td>
+          </tr>
+          <tr>
+            <td id="artigas">Artigas</td>
+            <td id="cantArtigas"></td>
+          </tr>
+          <tr>
+            <td id="colonia">Colonia</td>
+            <td id="cantColonia"></td>
+          </tr>
+          <tr>
+            <td id="durazno">Durazno</td>
+            <td id="cantDurazno"></td>
+          </tr>
+          <tr>
+            <td id="lavalleja">Lavalleja</td>
+            <td id="cantLavalleja"></td>
+          </tr>
+          <tr>
+            <td id="rioNegro">Rio Negro</td>
+            <td id="cantRioNegro"></td>
+          </tr>
+          <tr>
+            <td id="rivera">Rivera</td>
+            <td id="cantRivera"></td>
+          </tr>
+          <tr>
+            <td id="sanJose">San Jose</td>
+            <td id="cantSanJose"></td>
+          </tr>
+          <tr>
+            <td id="soriano">Soriano</td>
+            <td id="cantSoriano"></td>
+          </tr>
+          <tr>
+            <td id="tacuarembo">Tacuarembo</td>
+            <td id="cantTacuarembo"></td>
+          </tr>
+          <tr>
+            <td id="treintayTres">Treinta y Tres</td>
+            <td id="cantTreintayTres"></td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <br />
+      <input type="button" value="Regresar" id="btnRegresarDesdeInfo" />
+    </div>
 
     <!-- Pantalla del Perfil Invitado -->
     <div id="buscardorCedulaInvitado">
@@ -297,7 +360,153 @@
         value="Ocultar Reporte del Censo"
         id="ocultarInforme"
       />
-      <div id="tablaReporte"></div>
+      <div id="tablaReporte">
+        <table border="1px">
+          <thead id="tablaDepartamentos">
+            <tr>
+              <th>Departamento</th>
+              <th>Personas que Estudian</th>
+              <th>Personas que No Trabajan</th>
+              <th>Personas Dependiente o Independientes</th>
+              <th>Porcentaje del total de censados</th>
+            </tr>
+            <tr>
+              <td id="montevideo1">Montevideo</td>
+              <td id="cantEstudianMontevideo1"></td>
+              <td id="cantNoTrabajanMontevideo1"></td>
+              <td id="cantTrabajanMontevideo1"></td>
+              <td id="cantMontevideo1"></td>
+            </tr>
+            <tr>
+              <td id="maldonado1">Maldonado</td>
+              <td id="cantEstudianMaldonado1"></td>
+              <td id="cantNoTrabajanMaldonado1"></td>
+              <td id="cantTrabajanMaldonado1"></td>
+              <td id="cantMaldonado1"></td>
+            </tr>
+            <tr>
+              <td id="canelones1">Canelones</td>
+              <td id="cantEstudianCanelones1"></td>
+              <td id="cantNoTrabajanCanelones1"></td>
+              <td id="cantTrabajanCanelones1"></td>
+              <td id="cantCanelones1"></td>
+            </tr>
+            <tr>
+              <td id="cerroLargo1">Cerro largo</td>
+              <td id="cantEstudianCerroLargo1"></td>
+              <td id="cantNoTrabajanCerroLargo1"></td>
+              <td id="cantTrabajanCerroLargo1"></td>
+              <td id="cantCerroLargo1"></td>
+            </tr>
+            <tr>
+              <td id="flores1">Flores</td>
+              <td id="cantEstudianFlores1"></td>
+              <td id="cantNoTrabajanFlores1"></td>
+              <td id="cantTrabajanFlores1"></td>
+              <td id="cantFlores1"></td>
+            </tr>
+            <tr>
+              <td id="florida1">Florida</td>
+              <td id="cantEstudianFlorida1"></td>
+              <td id="cantNoTrabajanFlorida1"></td>
+              <td id="cantTrabajanFlorida1"></td>
+              <td id="cantFlorida1"></td>
+            </tr>
+            <tr>
+              <td id="salto1">Salto</td>
+              <td id="cantEstudianSalto1"></td>
+              <td id="cantNoTrabajanSalto1"></td>
+              <td id="cantTrabajanSalto1"></td>
+              <td id="cantSalto1"></td>
+            </tr>
+            <tr>
+              <td id="paysandu1">Paysandu</td>
+              <td id="cantEstudianPaysandu1"></td>
+              <td id="cantNoTrabajanPaysandu1"></td>
+              <td id="cantTrabajanPaysandu1"></td>
+              <td id="cantPaysandu1"></td>
+            </tr>
+            <tr>
+              <td id="rocha1">Rocha</td>
+              <td id="cantEstudianRocha1"></td>
+              <td id="cantNoTrabajanRocha1"></td>
+              <td id="cantTrabajanRocha1"></td>
+              <td id="cantRocha1"></td>
+            </tr>
+            <tr>
+              <td id="artigas1">Artigas</td>
+              <td id="cantEstudianArtigas1"></td>
+              <td id="cantNoTrabajanArtigas1"></td>
+              <td id="cantTrabajanArtigas1"></td>
+              <td id="cantArtigas1"></td>
+            </tr>
+            <tr>
+              <td id="colonia1">Colonia</td>
+              <td id="cantEstudianColonia1"></td>
+              <td id="cantNoTrabajanColonia1"></td>
+              <td id="cantTrabajanColonia1"></td>
+              <td id="cantColonia1"></td>
+            </tr>
+            <tr>
+              <td id="durazno1">Durazno</td>
+              <td id="cantEstudianDurazno1"></td>
+              <td id="cantNoTrabajanDurazno1"></td>
+              <td id="cantTrabajanDurazno1"></td>
+              <td id="cantDurazno1"></td>
+            </tr>
+            <tr>
+              <td id="lavalleja1">Lavalleja</td>
+              <td id="cantEstudianLavalleja1"></td>
+              <td id="cantNoTrabajanLavalleja1"></td>
+              <td id="cantTrabajanLavalleja1"></td>
+              <td id="cantLavalleja1"></td>
+            </tr>
+            <tr>
+              <td id="rioNegro1">Rio Negro</td>
+              <td id="cantEstudianRioNegro1"></td>
+              <td id="cantNoTrabajanRioNegro1"></td>
+              <td id="cantTrabajanRioNegro1"></td>
+              <td id="cantRioNegro1"></td>
+            </tr>
+            <tr>
+              <td id="rivera1">Rivera</td>
+              <td id="cantEstudianRivera1"></td>
+              <td id="cantNoTrabajanRivera1"></td>
+              <td id="cantTrabajanRivera1"></td>
+              <td id="cantRivera1"></td>
+            </tr>
+            <tr>
+              <td id="sanJose1">San Jose</td>
+              <td id="cantEstudianSanJose1"></td>
+              <td id="canNoTrabajantSanJose1"></td>
+              <td id="cantTrabajanSanJose1"></td>
+              <td id="cantSanJose1"></td>
+            </tr>
+            <tr>
+              <td id="soriano1">Soriano</td>
+              <td id="cantEstudianSoriano1"></td>
+              <td id="cantNoTrabajanSoriano1"></td>
+              <td id="cantTrabajanSoriano1"></td>
+              <td id="cantSoriano1"></td>
+            </tr>
+            <tr>
+              <td id="tacuarembo1">Tacuarembo</td>
+              <td id="cantEstudianTacuarembo1"></td>
+              <td id="cantNoTrabajanTacuarembo1"></td>
+              <td id="cantTrabajanTacuarembo1"></td>
+              <td id="cantTacuarembo1"></td>
+            </tr>
+            <tr>
+              <td id="treintayTres1">Treinta y Tres</td>
+              <td id="cantEstudianTreintayTres1"></td>
+              <td id="cantNoTrabajanTreintayTres1"></td>
+              <td id="cantTrabajanTreintayTres1"></td>
+              <td id="cantTreintayTres1"></td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
     <div id="formularioInvitado">
       <h3>INGRESAR DATOS PARA EL CENSO</h3>
