@@ -33,9 +33,9 @@ function inicio() {
   document
     .querySelector("#btnRegresar")
     .addEventListener("click", regresoApantallaPrincipal);
-  // document
-  //   .querySelector("#btnBuscarPorCed")
-  //   .addEventListener("click", buscarPorCedulaCensista);
+   document
+     .querySelector("#btnBuscarPorCed")
+     .addEventListener("click", buscarPorCedulaCensista);
   document
     .querySelector("#btnRegreso")
     .addEventListener("click", regresoCensista);
@@ -66,6 +66,10 @@ function inicio() {
   document
     .querySelector("#btnReasignarCompletado")
     .addEventListener("click", reasignarCensista);
+  document
+    .querySelector("#btnModificarFormCensista")
+    .addEventListener("click", modificarDatosBuscados);
+
 }
 
 let sistema = new Sistema();
@@ -257,8 +261,12 @@ function buscadorCedula() {
   let buscar = sistema.buscarCedula(cedula);
   if (buscar === null) {
     document.querySelector("#cedulabuscada").innerHTML =
-      "La cedula no esta censada";
+      "Para esta cedula no se han ingresado datos previos, debera ir al boton de ingresar Datos.";
+  } else if(buscar.validado === true){
+    document.querySelector("#cedulabuscada").innerHTML =
+      "La cedula ya fue validada por un censista, no se podran modificar los datos.";
   } else {
+    document.querySelector("#cedulabuscada").innerHTML = ''
     mostrarDiv("modificarDeDatos");
     document.querySelector("#nombre1").value =
       sistema.buscarCedula(cedula).nombre;
@@ -272,33 +280,43 @@ function buscadorCedula() {
       sistema.buscarCedula(cedula).ocupacion;
     document.querySelector("#departamento1").value =
       sistema.buscarCedula(cedula).departamento;
+      
   }
 }
-// function buscarPorCedulaCensista() {
-//   let cedula = Number(document.querySelector("#buscarPorCedula").value);
-//   let buscar = sistema.buscarCedula(cedula);
-//   if (buscar === null) {
-//     document.querySelector("#respuestaAbusqueda").innerHTML =
-//       "La cedula no esta censada";
-//   } else {
-//     mostrarDivPrincipal("modificarDatosCensista");
-//     document.querySelector("#nombre101").value =
-//       sistema.buscarCedula(cedula).nombre;
-//     document.querySelector("#apellido101").value =
-//       sistema.buscarCedula(cedula).apellido;
-//     document.querySelector("#edad101").value =
-//       sistema.buscarCedula(cedula).edad;
-//     document.querySelector("#cedula101").value =
-//       sistema.buscarCedula(cedula).cedula;
-//     document.querySelector("#cedula101").disabled = true;
-//     document.querySelector("#ocupacion101").value =
-//       sistema.buscarCedula(cedula).ocupacion;
-//     document.querySelector("#departamento101").value =
-//       sistema.buscarCedula(cedula).departamento;
-//     document.querySelector("#validado").value =
-//       sistema.buscarCedula(cedula).validado;
-//   }
-// }
+
+function buscarPorCedulaCensista() {
+  let cedula = Number(document.querySelector("#buscarPorCedula").value);
+  let buscar = sistema.buscarCedula(cedula);
+  let validado = ''
+  if(sistema.buscarCedula(cedula).validado === false){
+    validado = 'El censo no esta validado'
+  } else {
+    validado = 'El censo ya fue validado'
+  }
+  if (buscar === null) {
+    document.querySelector("#respuestaAbusqueda").innerHTML =
+      "La cedula no esta censada";
+  } else {
+    mostrarDivPrincipal("modificarDatosCensista");
+    document.querySelector("#nombre101").value =
+      sistema.buscarCedula(cedula).nombre;
+    document.querySelector("#apellido101").value =
+      sistema.buscarCedula(cedula).apellido;
+    document.querySelector("#edad101").value =
+      sistema.buscarCedula(cedula).edad;
+    document.querySelector("#cedula101").value =
+      sistema.buscarCedula(cedula).cedula;
+    document.querySelector("#cedula101").disabled = true;
+    document.querySelector("#ocupacion101").value =
+      sistema.buscarCedula(cedula).ocupacion;
+    document.querySelector("#departamento101").value =
+      sistema.buscarCedula(cedula).departamento;
+    document.querySelector("#pValidado").innerHTML=
+      validado
+      console.log(validado)
+  }
+}
+
 function regresoCensista() {
   mostrarDivPrincipal("perfilCensista");
   ocultarDiv("ingresoDatosCensista");
@@ -357,8 +375,8 @@ function datosCenso() {
     cedulaCenso.length === 0
   ) {
     alert("Todos los campos son obligatorios");
-  } else if (edadCenso < 0 || edadCenso > 120) {
-    alert("La edad tiene que estar entre 0 y 120");
+  } else if (edadCenso < 0 || edadCenso > 130) {
+    alert("La edad tiene que estar entre 0 y 130");
   } else if (digitoVerificar != digitoVerificador) {
     alert("Cedula Invalida");
   } else if (sistema.cedulaExiste(cedulaValidada) === true) {
@@ -375,7 +393,6 @@ function datosCenso() {
   }
 }
 
-//VER CON PROFESOR COMO REEMPLAZAR
 function modificarDatos() {
   let nombreCenso = document.querySelector("#nombre1").value.trim();
   let apellidoCenso = document.querySelector("#apellido1").value.trim();
@@ -393,8 +410,8 @@ function modificarDatos() {
     edadCenso.length === 0
   ) {
     alert("Todos los campos son obligatorios");
-  } else if (edadCenso < 0 || edadCenso > 120) {
-    alert("La edad tiene que estar entre 0 y 120");
+  } else if (edadCenso < 0 || edadCenso > 130) {
+    alert("La edad tiene que estar entre 0 y 130");
   } else if (ocupacionCenso === "") {
     alert("Seleccione Ocupacion");
   } else if (departamentoCenso === "") {
@@ -413,12 +430,51 @@ function modificarDatos() {
   }
 }
 
+function modificarDatosBuscados(){
+  let nombreCenso = document.querySelector("#nombre101").value.trim();
+  let apellidoCenso = document.querySelector("#apellido101").value.trim();
+  let edadCenso = document.querySelector("#edad101").value.trim();
+  let cedulaCenso = Number(document.querySelector("#cedula101").value);
+
+  let ocupacionCenso = document.querySelector("#ocupacion101").value.trim();
+  let departamentoCenso = document.querySelector("#departamento101").value.trim();
+
+  let censo = sistema.buscarCedula(cedulaCenso);
+
+  if (
+    nombreCenso.length === 0 ||
+    apellidoCenso.length === 0 ||
+    edadCenso.length === 0
+  ) {
+    alert("Todos los campos son obligatorios");
+  } else if (edadCenso < 0 || edadCenso > 130) {
+    alert("La edad tiene que estar entre 0 y 130");
+  } else if (ocupacionCenso === "") {
+    alert("Seleccione Ocupacion");
+  } else if (departamentoCenso === "") {
+    alert("Seleccione Departamento");
+  } else {
+    sistema.modificarCenso(
+      nombreCenso,
+      apellidoCenso,
+      edadCenso,
+      cedulaCenso,
+      departamentoCenso,
+      ocupacionCenso,
+      true
+    );
+    alert("modificaste y validaste el censo");
+    ocultarDiv("modificarDatosCensista");
+    mostrarDiv("perfilCensista")
+  }
+}
+
+
 function regresoApantallaPrincipal() {
   mostrarDivPrincipal("perfilCensista");
   ocultarDiv("ingresoDatosCensista");
 }
 
-//ACA VA VALIDADOR DE CEDULA
 function ingresarCensoCensista() {
   let nombreCenso = document.querySelector("#nombre10").value.trim();
   let apellidoCenso = document.querySelector("#apellido10").value.trim();
@@ -461,8 +517,8 @@ function ingresarCensoCensista() {
     cedulaCenso.length === 0
   ) {
     alert("Todos los campos son obligatorios");
-  } else if (edadCenso < 0 || edadCenso > 120) {
-    alert("La edad tiene que estar entre 0 y 120");
+  } else if (edadCenso < 0 || edadCenso > 130) {
+    alert("La edad tiene que estar entre 0 y 130");
   } else if (digitoVerificar != digitoVerificador) {
     alert("Cedula Invalida");
   } else if (sistema.cedulaExiste(cedulaValidada) === true) {
@@ -538,8 +594,8 @@ function validarCenso() {
     edadCenso.length === 0
   ) {
     alert("Todos los campos son obligatorios");
-  } else if (edadCenso < 0 || edadCenso > 120) {
-    alert("La edad tiene que estar entre 0 y 120");
+  } else if (edadCenso < 0 || edadCenso > 130) {
+    alert("La edad tiene que estar entre 0 y 130");
   } else if (ocupacionCenso === "") {
     alert("Seleccione Ocupacion");
   } else if (departamentoCenso === "") {

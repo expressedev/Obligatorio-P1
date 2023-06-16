@@ -69,12 +69,14 @@
         <br />
         <input
           type="button"
-          value="Consultar censos pre completados por validar"
+          value="Reasignar / Consultar censos pre completados por validar"
           id="btnCensosPreCompletados"
         />
         <div id="idCensos">
-          <br /><br /><select id="selectCensos"></select
-          ><input type="button" value="Modificar" id="btnModificar" /> ><input
+          <p>Tus censos pre completados para validar son:</p>
+          <select id="selectCensos"></select
+          ><input type="button" value="Modificar / Validar" id="btnModificar" />
+          <input
             type="button"
             value="Reasignar"
             id="btnReasignar"
@@ -181,7 +183,7 @@
         <br />
       </div>
       <br />
-      <!-- <div>
+      <div>
         <input
           type="text"
           id="buscarPorCedula"
@@ -191,7 +193,7 @@
         <input type="button" id="btnBuscarPorCed" value="Buscar Usuario" />
         <p id="respuestaAbusqueda"></p>
         <br />
-      </div> -->
+      </div>
       <!-- <div>
         <h3>Reasignar Persona</h3>
         <label for="pendienteValidar">Seleccione persona</label>
@@ -579,10 +581,10 @@
         <option id="01901">Treinta y Tres</option></select
       ><br /><br />
       <label for="validado">Censo Validado?</label>
-      <input type="text" id="validado" />
+      <p id="pValidado"></p>
       <input
         type="button"
-        value="Modificar Datos"
+        value="Modificar/Validar"
         id="btnModificarFormCensista"
       />
       <br />
