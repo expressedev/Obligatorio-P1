@@ -156,6 +156,300 @@ function mostrarInforme() {
     canelonesTrabajan;
   document.querySelector("#cantCanelones1").innerHTML = totalCanelones;
 
+  let maldonado = "Maldonado";
+  let maldonadoTrabajan =
+    sistema.contarIndependiente(maldonado) +
+    sistema.contarDependiente(maldonado);
+  let maldonadoEstudiante = sistema.contarEstudiante(maldonado);
+  let maldonadoNoTrabajan = sistema.contarNoTrabajan(maldonado);
+  let totalMaldonado = (
+    (sistema.contarDepartamento(maldonado) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianMaldonado1").innerHTML =
+    maldonadoEstudiante;
+  document.querySelector("#cantNoTrabajanMaldonado1").innerHTML =
+    maldonadoNoTrabajan;
+  document.querySelector("#cantTrabajanMaldonado1").innerHTML =
+    maldonadoTrabajan;
+  document.querySelector("#cantMaldonado1").innerHTML = totalMaldonado;
+
+  let CerroLargo = "CerroLargo1";
+  let CerroLargoTrabajan =
+    sistema.contarIndependiente(CerroLargo) +
+    sistema.contarDependiente(CerroLargo);
+  let CerroLargoEstudiante = sistema.contarEstudiante(canelones);
+  let CerroLargoNoTrabajan = sistema.contarNoTrabajan(canelones);
+  let totalCerroLargo = (
+    (sistema.contarDepartamento(CerroLargo) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianCerroLargo1").innerHTML =
+    CerroLargoEstudiante;
+  document.querySelector("#cantNoTrabajanCerroLargo1").innerHTML =
+    CerroLargoNoTrabajan;
+  document.querySelector("#cantTrabajanCerroLargo1").innerHTML =
+    CerroLargoTrabajan;
+  document.querySelector("#cantCerroLargo1").innerHTML = totalCerroLargo;
+
+  let flores = "Flores";
+  let floresTrabajan =
+    sistema.contarIndependiente(flores) +
+    sistema.contarDependiente(flores);
+  let floresEstudiante = sistema.contarEstudiante(flores);
+  let floresNoTrabajan = sistema.contarNoTrabajan(flores);
+  let totalFlores = (
+    (sistema.contarDepartamento(flores) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianFlores1").innerHTML =
+    floresEstudiante;
+  document.querySelector("#cantNoTrabajanFlores1").innerHTML =
+    floresNoTrabajan;
+  document.querySelector("#cantTrabajanFlores1").innerHTML =
+    floresTrabajan;
+  document.querySelector("#cantFlores1").innerHTML = totalFlores;
+
+  let florida = "Florida";
+  let floridaTrabajan =
+    sistema.contarIndependiente(florida) +
+    sistema.contarDependiente(florida);
+  let floridaEstudiante = sistema.contarEstudiante(florida);
+  let floridaNoTrabajan = sistema.contarNoTrabajan(florida);
+  let totalFlorida = (
+    (sistema.contarDepartamento(florida) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianFlorida1").innerHTML =
+    floridaEstudiante;
+  document.querySelector("#cantNoTrabajanFlorida1").innerHTML =
+    floridaNoTrabajan;
+  document.querySelector("#cantTrabajanFlorida1").innerHTML =
+    floridaTrabajan;
+  document.querySelector("#cantFlorida1").innerHTML = totalFlorida;
+
+  let salto = "Salto";
+  let saltoTrabajan =
+    sistema.contarIndependiente(salto) +
+    sistema.contarDependiente(salto);
+  let saltoEstudiante = sistema.contarEstudiante(salto);
+  let saltoNoTrabajan = sistema.contarNoTrabajan(salto);
+  let totalSalto = (
+    (sistema.contarDepartamento(salto) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianSalto1").innerHTML =
+    saltoEstudiante;
+  document.querySelector("#cantNoTrabajanSalto1").innerHTML =
+    saltoNoTrabajan;
+  document.querySelector("#cantTrabajanSalto1").innerHTML =
+    saltoTrabajan;
+  document.querySelector("#cantSalto1").innerHTML = totalSalto;
+
+  let paysandu = "Paysandu";
+  let paysanduTrabajan =
+    sistema.contarIndependiente(paysandu) +
+    sistema.contarDependiente(paysandu);
+  let paysanduEstudiante = sistema.contarEstudiante(paysandu);
+  let paysanduNoTrabajan = sistema.contarNoTrabajan(paysandu);
+  let totalPaysandu = (
+    (sistema.contarDepartamento(paysandu) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianPaysandu1").innerHTML =
+    paysanduEstudiante;
+  document.querySelector("#cantNoTrabajanPaysandu1").innerHTML =
+    paysanduNoTrabajan;
+  document.querySelector("#cantTrabajanPaysandu1").innerHTML =
+    paysanduTrabajan;
+  document.querySelector("#cantPaysandu1").innerHTML = totalPaysandu;
+
+  let rocha = "Rocha";
+  let rochaTrabajan =
+    sistema.contarIndependiente(rocha) +
+    sistema.contarDependiente(rocha);
+  let rochaEstudiante = sistema.contarEstudiante(rocha);
+  let rochaNoTrabajan = sistema.contarNoTrabajan(rocha);
+  let totalRocha = (
+    (sistema.contarDepartamento(rocha) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianRocha1").innerHTML =
+    rochaEstudiante;
+  document.querySelector("#cantNoTrabajanRocha1").innerHTML =
+    rochaNoTrabajan;
+  document.querySelector("#cantTrabajanRocha1").innerHTML =
+    rochaTrabajan;
+  document.querySelector("#cantRocha1").innerHTML = totalRocha;
+
+  let treintayTres = "TreintayTres";
+  let treintayTresTrabajan =
+    sistema.contarIndependiente(treintayTres) +
+    sistema.contarDependiente(treintayTres);
+  let treintayTresEstudiante = sistema.contarEstudiante(treintayTres);
+  let treintayTresNoTrabajan = sistema.contarNoTrabajan(treintayTres);
+  let totalTreintayTres = (
+    (sistema.contarDepartamento(treintayTres) / sistema.censos.length) *
+    100
+  ).toFixed(2);
+
+  document.querySelector("#cantEstudianTreintayTres1").innerHTML =
+    treintayTresEstudiante;
+  document.querySelector("#cantNoTrabajanTreintayTres1").innerHTML =
+    treintayTresNoTrabajan;
+  document.querySelector("#cantTrabajanTreintayTres1").innerHTML =
+    treintayTresTrabajan;
+  document.querySelector("#cantTreintayTres1").innerHTML = totalTreintayTres;
+
+  let artigas = "Artigas";
+let artigasTrabajan =
+  sistema.contarIndependiente(artigas) + sistema.contarDependiente(artigas);
+let artigasEstudiante = sistema.contarEstudiante(artigas);
+let artigasNoTrabajan = sistema.contarNoTrabajan(artigas);
+let totalArtigas = (
+  (sistema.contarDepartamento(artigas) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianArtigas1").innerHTML = artigasEstudiante;
+document.querySelector("#cantNoTrabajanArtigas1").innerHTML = artigasNoTrabajan;
+document.querySelector("#cantTrabajanArtigas1").innerHTML = artigasTrabajan;
+document.querySelector("#cantArtigas1").innerHTML = totalArtigas;
+
+let colonia = "Colonia";
+let coloniaTrabajan =
+  sistema.contarIndependiente(colonia) + sistema.contarDependiente(colonia);
+let coloniaEstudiante = sistema.contarEstudiante(colonia);
+let coloniaNoTrabajan = sistema.contarNoTrabajan(colonia);
+let totalColonia = (
+  (sistema.contarDepartamento(colonia) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianColonia1").innerHTML = coloniaEstudiante;
+document.querySelector("#cantNoTrabajanColonia1").innerHTML = coloniaNoTrabajan;
+document.querySelector("#cantTrabajanColonia1").innerHTML = coloniaTrabajan;
+document.querySelector("#cantColonia1").innerHTML = totalColonia;
+
+let durazno = "Durazno";
+let duraznoTrabajan =
+  sistema.contarIndependiente(durazno) + sistema.contarDependiente(durazno);
+let duraznoEstudiante = sistema.contarEstudiante(durazno);
+let duraznoNoTrabajan = sistema.contarNoTrabajan(durazno);
+let totalDurazno = (
+  (sistema.contarDepartamento(durazno) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianDurazno1").innerHTML = duraznoEstudiante;
+document.querySelector("#cantNoTrabajanDurazno1").innerHTML = duraznoNoTrabajan;
+document.querySelector("#cantTrabajanDurazno1").innerHTML = duraznoTrabajan;
+document.querySelector("#cantDurazno1").innerHTML = totalDurazno;
+
+let lavalleja = "Lavalleja";
+let lavallejaTrabajan =
+  sistema.contarIndependiente(lavalleja) + sistema.contarDependiente(lavalleja);
+let lavallejaEstudiante = sistema.contarEstudiante(lavalleja);
+let lavallejaNoTrabajan = sistema.contarNoTrabajan(lavalleja);
+let totalLavalleja = (
+  (sistema.contarDepartamento(lavalleja) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianLavalleja1").innerHTML =
+  lavallejaEstudiante;
+document.querySelector("#cantNoTrabajanLavalleja1").innerHTML =
+  lavallejaNoTrabajan;
+document.querySelector("#cantTrabajanLavalleja1").innerHTML = lavallejaTrabajan;
+document.querySelector("#cantLavalleja1").innerHTML = totalLavalleja;
+
+let rionegro = "Rio Negro";
+let rioNegroTrabajan =
+  sistema.contarIndependiente(rionegro) + sistema.contarDependiente(rionegro);
+let rioNegroEstudiante = sistema.contarEstudiante(rionegro);
+let rioNegroNoTrabajan = sistema.contarNoTrabajan(rionegro);
+let totalRioNegro = (
+  (sistema.contarDepartamento(rionegro) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianRioNegro1").innerHTML = rioNegroEstudiante;
+document.querySelector("#cantNoTrabajanRioNegro1").innerHTML =
+  rioNegroNoTrabajan;
+document.querySelector("#cantTrabajanRioNegro1").innerHTML = rioNegroTrabajan;
+document.querySelector("#cantRioNegro1").innerHTML = totalRioNegro;
+
+let rivera = "Rivera";
+let riveraTrabajan =
+  sistema.contarIndependiente(rivera) + sistema.contarDependiente(rivera);
+let riveraEstudiante = sistema.contarEstudiante(rivera);
+let riveraNoTrabajan = sistema.contarNoTrabajan(rivera);
+let totalRivera = (
+  (sistema.contarDepartamento(rivera) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianRivera1").innerHTML = riveraEstudiante;
+document.querySelector("#cantNoTrabajanRivera1").innerHTML = riveraNoTrabajan;
+document.querySelector("#cantTrabajanRivera1").innerHTML = riveraTrabajan;
+document.querySelector("#cantRivera1").innerHTML = totalRivera;
+
+let sanJose = "San Jose";
+let sanJoseTrabajan =
+  sistema.contarIndependiente(sanJose) + sistema.contarDependiente(sanJose);
+let sanJoseEstudiante = sistema.contarEstudiante(sanJose);
+let sanJoseNoTrabajan = sistema.contarNoTrabajan(sanJose);
+let totalSanJose = (
+  (sistema.contarDepartamento(sanJose) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianSanJose1").innerHTML = sanJoseEstudiante;
+document.querySelector("#canNoTrabajanSanJose1").innerHTML = sanJoseNoTrabajan;
+document.querySelector("#cantTrabajanSanJose1").innerHTML = sanJoseTrabajan;
+document.querySelector("#cantSanJose1").innerHTML = totalSanJose;
+
+let soriano = "Soriano";
+let sorianoTrabajan =
+  sistema.contarIndependiente(soriano) + sistema.contarDependiente(soriano);
+let sorianoEstudiante = sistema.contarEstudiante(soriano);
+let sorianoNoTrabajan = sistema.contarNoTrabajan(soriano);
+let totalSoriano = (
+  (sistema.contarDepartamento(soriano) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianSoriano1").innerHTML = sorianoEstudiante;
+document.querySelector("#cantNoTrabajanSoriano1").innerHTML = sorianoNoTrabajan;
+document.querySelector("#cantTrabajanSoriano1").innerHTML = sorianoTrabajan;
+document.querySelector("#cantSoriano1").innerHTML = totalSoriano;
+
+let tacuarembo = "Tacuarembo";
+let tacuaremboTrabajan =
+  sistema.contarIndependiente(tacuarembo) +
+  sistema.contarDependiente(tacuarembo);
+let tacuaremboEstudiante = sistema.contarEstudiante(tacuarembo);
+let tacuaremboNoTrabajan = sistema.contarNoTrabajan(tacuarembo);
+let totalTacuarembo = (
+  (sistema.contarDepartamento(tacuarembo) / sistema.censos.length) *
+  100
+).toFixed(2);
+
+document.querySelector("#cantEstudianTacuarembo1").innerHTML =
+  tacuaremboEstudiante;
+document.querySelector("#cantNoTrabajanTacuarembo1").innerHTML =
+  tacuaremboNoTrabajan;
+document.querySelector("#cantTrabajanTacuarembo1").innerHTML =
+  tacuaremboTrabajan;
+document.querySelector("#cantTacuarembo1").innerHTML = totalTacuarembo;
+
   //HAY QUE COPIAR PARA CADA DEPARTAMENTO EJEMPLO: DESDE LA LINE 141 LET CANELONES HASTA LA LINE 159 QUE TERMINA EN =TOTALCANELONES, COPIAR Y PEGAR Y CAMBIAR LOS CANELONES POR MALDONADOS RESPETANDO LAS MAYUSCULAS Y MINUSCULAS POR LOS IDS.
 
   mostrarDiv("tablaReporte");
@@ -551,9 +845,9 @@ function ingresarCensoCensista() {
   let departamentoCenso = document
     .querySelector("#departamento10")
     .value.trim();
-  let totalCensistas = sistema.usuarios.length;
-  let idCenso = Math.floor(Math.random() * totalCensistas + 1);
-
+  
+  let idCenso = sistema.usuarioLogueado.id;
+  console.log(idCenso);
   let multiplicador = "2987634";
   let digitoVerificar = cedulaValidarDigito.charAt(
     cedulaValidarDigito.length - 1
@@ -572,7 +866,7 @@ function ingresarCensoCensista() {
     cedulaValidada,
     ocupacionCenso,
     departamentoCenso,
-    false,
+    true,
     idCenso
   );
   if (
