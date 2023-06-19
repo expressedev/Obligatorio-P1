@@ -575,30 +575,31 @@ function buscarPorCedulaCensista() {
   let cedula = Number(document.querySelector("#buscarPorCedula").value);
   let buscar = sistema.buscarCedula(cedula);
   let validado = "";
-  if (sistema.buscarCedula(cedula).validado === false) {
-    validado = "El censo no esta validado";
-  } else {
-    validado = "El censo ya fue validado";
+  if(sistema.cedulaExiste(cedula) === true){
+    if (sistema.buscarCedula(cedula).validado === false) {
+      mostrarDivPrincipal("modificarDatosCensista");
+      validado = "El censo no esta validado";
+      document.querySelector("#nombre101").value =
+        sistema.buscarCedula(cedula).nombre;
+      document.querySelector("#apellido101").value =
+        sistema.buscarCedula(cedula).apellido;
+      document.querySelector("#edad101").value =
+        sistema.buscarCedula(cedula).edad;
+      document.querySelector("#cedula101").value =
+        sistema.buscarCedula(cedula).cedula;
+      document.querySelector("#cedula101").disabled = true;
+      document.querySelector("#ocupacion101").value =
+        sistema.buscarCedula(cedula).ocupacion;
+      document.querySelector("#departamento101").value =
+        sistema.buscarCedula(cedula).departamento;
+      document.querySelector("#pValidado").innerHTML = validado;
+      
+    } else {
+    alert('El censo ya fue validado');
   }
-  if (buscar === null) {
-    document.querySelector("#respuestaAbusqueda").innerHTML =
-      "La cedula no esta censada";
-  } else {
-    mostrarDivPrincipal("modificarDatosCensista");
-    document.querySelector("#nombre101").value =
-      sistema.buscarCedula(cedula).nombre;
-    document.querySelector("#apellido101").value =
-      sistema.buscarCedula(cedula).apellido;
-    document.querySelector("#edad101").value =
-      sistema.buscarCedula(cedula).edad;
-    document.querySelector("#cedula101").value =
-      sistema.buscarCedula(cedula).cedula;
-    document.querySelector("#cedula101").disabled = true;
-    document.querySelector("#ocupacion101").value =
-      sistema.buscarCedula(cedula).ocupacion;
-    document.querySelector("#departamento101").value =
-      sistema.buscarCedula(cedula).departamento;
-    document.querySelector("#pValidado").innerHTML = validado;
+}
+else{
+    alert("La cedula ingresada no tiene censo asociado");
   }
 }
 
