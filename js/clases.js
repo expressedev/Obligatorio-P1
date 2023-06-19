@@ -7,7 +7,7 @@ class Sistema {
     this.usuarioLogueado = null;
   }
   agregarUsuarioPrueba() {
-    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123", 1)); //En este caso el this se utiliza para acceder a una propiedad
+    this.usuarios.push(new Usuario("Pedro", "Pedro99", "Hola123", 1));
     this.usuarios.push(new Usuario("Maxi", "Maxi10", "Hola123", 2));
     this.usuarios.push(new Usuario("Guille", "Guille", "Hola123", 3));
   }
@@ -28,69 +28,269 @@ class Sistema {
         "Maxi",
         "Navarro",
         "20",
-        44103662,
+        44103668,
         "Canelones",
         "Independiente",
         true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
-        "Juan",
-        "Navarro",
-        "22",
-        49758674,
-        "Canelones",
-        "Independiente",
-        false,
+        "Lionel",
+        "Messi",
+        "34",
+        29781386,
+        "Maldonado",
+        "Dependiente",
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
-        "Joaquin",
-        "Suarez",
-        "11",
+        "Diego",
+        "Forlan Jr",
+        "14",
         49758673,
-        "Canelones",
-        "Dependiente",
-        false,
+        "Montevideo",
+        "Estudiante",
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Joaquina",
         "Rodriguez",
         "21",
-        49758663,
+        34066890,
         "Soriano",
-        "Dependiente",
-        false,
+        "No trabaja",
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Hernan",
         "Arias",
-        "21",
-        49758261,
-        "Montevideo",
-        "No trabaja",
+        "14",
+        34066890,
+        "Duarzno",
+        "Estudiante",
         true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Marcos",
         "Esteban",
-        "12",
-        49758661,
+        "42",
+        38223985,
         "Canelones",
-        "No trabaja",
-        false,
+        "Dependiente",
+        true,
         Math.floor(Math.random() * this.usuarios.length + 1)
       ),
       new Censo(
         "Luis",
         "Suarez",
-        "31",
-        49751661,
+        "38",
+        28627204,
+        "Montevideo",
+        "Independiente",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Javier",
+        "Hernandez",
+        "28",
+        12350879,
+        "Colonia",
+        "Dependiente",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Marina",
+        "Rodriguez",
+        "18",
+        9009867,
+        "Montevideo",
+        "Independiente",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Mario",
+        "Yamasaki",
+        "16",
+        49775410,
+        "Rocha",
+        "Estudiante",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Federico",
+        "Valverde",
+        "22",
+        90288121,
+        "Rio Negro",
+        "Dependiente",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Juan",
+        "Heslop",
+        "34",
+        13394862,
         "Canelones",
         "Estudiante",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Leo",
+        "Fernandez",
+        "38",
+        37703273,
+        "Salto",
+        "No trabaja",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Martin",
+        "Imhof",
+        "38",
+        39990321,
+        "Lavalleja",
+        "Dependiente",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Cristian",
+        "Sanches",
+        "68",
+        39990321,
+        "Lavalleja",
+        "No trabaja",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Rodrigo",
+        "Stoickovic",
+        "28",
+        32013023,
+        "Soriano",
+        "Dependiente",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Ines",
+        "Pereira",
+        "18",
+        62285882,
+        "Salto",
+        "Independiente",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Lorena",
+        "Fernandez",
+        "12",
+        77603790,
+        "Paysandu",
+        "Estudiante",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Maria",
+        "Algorta",
+        "20",
+        97706314,
+        "Paysandu",
+        "No trabaja",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Cristian",
+        "Santos",
+        "68",
+        17246845,
+        "Rivera",
+        "Dependiente",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Juana",
+        "De Arcos",
+        "28",
+        86416801,
+        "Rivera",
+        "Estudiante",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Jaime",
+        "Roos",
+        "18",
+        29524596,
+        "Florida",
+        "Estudiante",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Manuela",
+        "Perez",
+        "38",
+        46761957,
+        "Florida",
+        "Dependiente",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Martina",
+        "Rodriguez",
+        "14",
+        77756993,
+        "Flores",
+        "Estudiante",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Mercedes",
+        "Lorenzo",
+        "68",
+        38435877,
+        "Montevideo",
+        "No trabaja",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Juan",
+        "Martinez",
+        "28",
+        60937962,
+        "Canelones",
+        "Estudiante",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Javier",
+        "Sanches",
+        "68",
+        60913750,
+        "Maldonado",
+        "No trabaja",
         false,
         Math.floor(Math.random() * this.usuarios.length + 1)
       )
