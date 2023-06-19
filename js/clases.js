@@ -293,6 +293,26 @@ class Sistema {
         "No trabaja",
         false,
         Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Juan",
+        "Rodriguez",
+        "11",
+        55981283,
+        "Maldonado",
+        "Estudiante",
+        true,
+        Math.floor(Math.random() * this.usuarios.length + 1)
+      ),
+      new Censo(
+        "Javier",
+        "Milei",
+        "34",
+        37675894,
+        "Montevideo",
+        "No trabaja",
+        false,
+        Math.floor(Math.random() * this.usuarios.length + 1)
       )
     );
   }
